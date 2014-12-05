@@ -109,4 +109,25 @@ public class GeneroDAO {
         
         return null;
     }
+
+    public Genero posicionaGeneroDescricao (String descricao) {
+        String sql = "SELECT * FROM genero USE INDEX (INDEX_1) WHERE descricao like ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, descricao + "%");
+            
+            try(ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Genero genero = new Genero();
+                    genero.setId(Integer.parseInt(rs.getString("id")));
+                    genero.setDescricao(rs.getString("descricao"));
+                    return genero;
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao posicionar gênero por descrição", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return null;
+    }
 }

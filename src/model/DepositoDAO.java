@@ -109,5 +109,26 @@ public class DepositoDAO {
         
         return null;
     }
+    
+        public Deposito posicionaDepositoDescricao (String descricao) {
+        String sql = "SELECT * FROM deposito USE INDEX (INDEX_1) WHERE descricao like ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, descricao + "%");
+            
+            try(ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Deposito deposito = new Deposito();
+                    deposito.setId(Integer.parseInt(rs.getString("id")));
+                    deposito.setDescricao(rs.getString("descricao"));
+                    return deposito;
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao posicionar depósito por nome", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return null;
+    }
 }
 

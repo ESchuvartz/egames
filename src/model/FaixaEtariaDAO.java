@@ -90,10 +90,31 @@ public class FaixaEtariaDAO {
     }
     
     public FaixaEtaria posicionaFaixaEtaria (int id) {
-        String sql = "SELECT * FROM FaixaEtaria WHERE id = ?";
+        String sql = "SELECT * FROM FaixaEtaria USE INDEX (INDEX_2) WHERE id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
+            
+            try(ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    FaixaEtaria faixaEtaria = new FaixaEtaria();
+                    faixaEtaria.setId(Integer.parseInt(rs.getString("id")));
+                    faixaEtaria.setDescricao(rs.getString("descricao"));
+                    return faixaEtaria;
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao posicionar faixa etária", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return null;
+    }
+    
+    public FaixaEtaria posicionaFaixaEtariaDescricao (String descricao) {
+        String sql = "SELECT * FROM FaixaEtaria USE INDEX (INDEX_1) WHERE descricao like ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, descricao + "%");
             
             try(ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {

@@ -3,14 +3,13 @@ package model;
 public class Jogo {
     private int id;
     private String nome;
-    private Distribuidora distribuidora;
-    private Genero genero;
-    private FaixaEtaria faixaEtaria;
-    private Deposito deposito;
+    private int idDistribuidora;
+    private int idGenero;
+    private int idFaixaEtaria;
+    private int idDeposito;
     private double valor;
     private double classificacao;
     private String review;
-    private String imagem;
 
     public Jogo() {
     }
@@ -23,44 +22,12 @@ public class Jogo {
         this.classificacao = classificacao;
     }
 
-    public Deposito getDeposito() {
-        return deposito;
-    }
-
-    public void setDeposito(Deposito deposito) {
-        this.deposito = deposito;
-    }
-
-    public String getDescricao() {
+    public String getNome() {
         return nome;
     }
 
-    public void setDescricao(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Distribuidora getDistribuidora() {
-        return distribuidora;
-    }
-
-    public void setDistribuidora(Distribuidora distribuidora) {
-        this.distribuidora = distribuidora;
-    }
-
-    public FaixaEtaria getFaixaEtaria() {
-        return faixaEtaria;
-    }
-
-    public void setFaixaEtaria(FaixaEtaria faixaEtaria) {
-        this.faixaEtaria = faixaEtaria;
-    }
-
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
     }
 
     public int getId() {
@@ -69,14 +36,6 @@ public class Jogo {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
     }
 
     public String getReview() {
@@ -93,5 +52,37 @@ public class Jogo {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    public int getIdDistribuidora() {
+        return idDistribuidora;
+    }
+
+    public void setIdDistribuidora(int idDistribuidora) {
+        this.idDistribuidora = idDistribuidora;
+    }
+
+    public int getIdGenero() {
+        return idGenero;
+    }
+
+    public void setIdGenero(int idGenero) {
+        this.idGenero = idGenero;
+    }
+
+    public int getIdFaixaEtaria() {
+        return idFaixaEtaria;
+    }
+
+    public void setIdFaixaEtaria(int idFaixaEtaria) {
+        this.idFaixaEtaria = idFaixaEtaria;
+    }
+
+    public int getIdDeposito() {
+        return idDeposito;
+    }
+
+    public void setIdDeposito(int idDeposito) {
+        this.idDeposito = idDeposito;
     }
 }

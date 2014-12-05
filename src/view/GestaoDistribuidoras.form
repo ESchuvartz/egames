@@ -11,7 +11,6 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <Events>
     <EventHandler event="windowGainedFocus" listener="java.awt.event.WindowFocusListener" parameters="java.awt.event.WindowEvent" handler="formWindowGainedFocus"/>
@@ -96,7 +95,7 @@
                   <Component id="jButtonEscolher" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabelExibirImagem" pref="248" max="32767" attributes="0"/>
+              <Component id="jLabelExibirImagem" min="-2" pref="248" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonAdicionar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -105,7 +104,7 @@
                   <Component id="jButtonSair" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

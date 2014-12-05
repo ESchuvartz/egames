@@ -118,4 +118,27 @@ public class DistribuidoraDAO {
         
         return null;
     }
+    
+    public Distribuidora posicionaDistribuidoraNome (String nome) {
+        String sql = "SELECT * FROM distribuidora USE INDEX (INDEX_1) WHERE nome like ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, nome + "%");
+            
+            try(ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Distribuidora distribuidora = new Distribuidora();
+                    distribuidora.setId(Integer.parseInt(rs.getString("id")));
+                    distribuidora.setNome(rs.getString("nome"));
+                    distribuidora.setFundacao(Date.valueOf(rs.getString("fundacao")));
+                    distribuidora.setImagem(rs.getString("imagem"));
+                    return distribuidora;
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao posicionar distribuidora por nome", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return null;
+    }
 }
