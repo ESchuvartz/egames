@@ -64,8 +64,7 @@ public class GestaoDistribuidoraController implements ActionListener, WindowFocu
     
     //Função para exibir a imagem
     public void exibeImagem(String sPath) {
-        if (!sPath.trim().isEmpty()) {ImageIcon imagem = new ImageIcon(sPath
-            );
+        if (!sPath.trim().isEmpty()) {ImageIcon imagem = new ImageIcon(sPath);
             //Verifica se a imagem a ser exibida possui tamanho maior que o JLabel para redimensioná-la
             if (imagem.getIconWidth() > this.gestaoDistribuidoras.getjLabelExibirImagem().getWidth()) {
                 this.gestaoDistribuidoras.getjLabelExibirImagem().setIcon(new ImageIcon(imagem.getImage().getScaledInstance(this.gestaoDistribuidoras.getjLabelExibirImagem().getWidth(),this.gestaoDistribuidoras.getjLabelExibirImagem().getHeight(), Image.SCALE_DEFAULT)));
