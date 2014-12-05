@@ -7,6 +7,8 @@ package view;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JSeparator;
 
 /**
  *
@@ -22,7 +24,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     public JMenuBar getjMenuBar1() {
-        return jMenuBar1;
+        return jMenuBarPrincipal;
     }
 
     public JMenu getjMenuCadastros() {
@@ -37,6 +39,66 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return jMenuItemDistribuidoras;
     }
 
+    public JMenuItem getjMenuItemGeneros() {
+        return jMenuItemGeneros;
+    }
+
+    public JMenuItem getjMenuItemFaixasEtarias() {
+        return jMenuItemFaixasEtarias;
+    }
+
+    public JMenuItem getjMenuItemDepositos() {
+        return jMenuItemDepositos;
+    }
+
+    public JPopupMenu.Separator getjSeparator1() {
+        return jSeparator1;
+    }
+
+    public JPopupMenu.Separator getjSeparator2() {
+        return jSeparator2;
+    }
+
+    public JSeparator getjSeparator3() {
+        return jSeparator3;
+    }
+
+    public JMenuBar getjMenuBar2() {
+        return jMenuBar2;
+    }
+
+    public JMenu getjMenuEstoque() {
+        return jMenuEstoque;
+    }
+
+    public JMenu getjMenu1() {
+        return jMenu1;
+    }
+
+    public JMenu getjMenu2() {
+        return jMenu2;
+    }
+
+    public JMenu getjMenu3() {
+        return jMenu3;
+    }
+
+    public JMenuBar getjMenuBarPrincipal() {
+        return jMenuBarPrincipal;
+    }
+
+    public JMenuItem getjMenuItem1() {
+        return jMenuItem1;
+    }
+
+    public JMenuItem getjMenuItemJogos() {
+        return jMenuItemJogos;
+    }
+
+    public JPopupMenu.Separator getjSeparator4() {
+        return jSeparator4;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,49 +108,115 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuBarPrincipal = new javax.swing.JMenuBar();
         jMenuCadastros = new javax.swing.JMenu();
         jMenuItemDistribuidoras = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemGeneros = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemFaixasEtarias = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemJogos = new javax.swing.JMenuItem();
+        jMenuEstoque = new javax.swing.JMenu();
+        jMenuItemDepositos = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuConsultas = new javax.swing.JMenu();
+
+        jMenu1.setText("jMenu1");
+
+        jMenu2.setText("File");
+        jMenuBar2.add(jMenu2);
+
+        jMenu3.setText("Edit");
+        jMenuBar2.add(jMenu3);
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("EGames - Menu Principal");
         setExtendedState(MAXIMIZED_BOTH);
         setIconImages(null);
-        setName("menuPrincipal");
+        setName("menuPrincipal"); // NOI18N
 
-        jMenuCadastros.setText("Cadastros");
+        jMenuCadastros.setText("Jogos");
 
         jMenuItemDistribuidoras.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemDistribuidoras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Distribuidoras.png"))); // NOI18N
         jMenuItemDistribuidoras.setText("Distribuidoras");
         jMenuCadastros.add(jMenuItemDistribuidoras);
+        jMenuCadastros.add(jSeparator1);
 
-        jMenuBar1.add(jMenuCadastros);
+        jMenuItemGeneros.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemGeneros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Genero.png"))); // NOI18N
+        jMenuItemGeneros.setText("Gêneros");
+        jMenuCadastros.add(jMenuItemGeneros);
+        jMenuCadastros.add(jSeparator2);
+
+        jMenuItemFaixasEtarias.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemFaixasEtarias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/FaixaEtaria.png"))); // NOI18N
+        jMenuItemFaixasEtarias.setText("Faixas Etárias");
+        jMenuCadastros.add(jMenuItemFaixasEtarias);
+        jMenuCadastros.add(jSeparator3);
+
+        jMenuItemJogos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemJogos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Jogos.png"))); // NOI18N
+        jMenuItemJogos.setText("Jogos");
+        jMenuCadastros.add(jMenuItemJogos);
+
+        jMenuBarPrincipal.add(jMenuCadastros);
+
+        jMenuEstoque.setText("Estoque");
+
+        jMenuItemDepositos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemDepositos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Depositos.png"))); // NOI18N
+        jMenuItemDepositos.setText("Depósitos");
+        jMenuEstoque.add(jMenuItemDepositos);
+        jMenuEstoque.add(jSeparator4);
+
+        jMenuBarPrincipal.add(jMenuEstoque);
 
         jMenuConsultas.setText("Consultas");
-        jMenuBar1.add(jMenuConsultas);
+        jMenuBarPrincipal.add(jMenuConsultas);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBarPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 636, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 402, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JMenu jMenuCadastros;
     private javax.swing.JMenu jMenuConsultas;
+    private javax.swing.JMenu jMenuEstoque;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemDepositos;
     private javax.swing.JMenuItem jMenuItemDistribuidoras;
+    private javax.swing.JMenuItem jMenuItemFaixasEtarias;
+    private javax.swing.JMenuItem jMenuItemGeneros;
+    private javax.swing.JMenuItem jMenuItemJogos;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     // End of variables declaration//GEN-END:variables
 }

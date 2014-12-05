@@ -1,13 +1,17 @@
 package view;
 
-import java.awt.Image;
 import javax.swing.*;
 
 public class GestaoDistribuidoras extends javax.swing.JFrame {
     /**
      * Creates new form GestaoDistribuidoras
+     * @return 
      */
     
+    public JButton getjButtonPesquisar() {
+        return jButtonPesquisar;
+    }
+
     public GestaoDistribuidoras() {
         initComponents();
     }
@@ -96,9 +100,17 @@ public class GestaoDistribuidoras extends javax.swing.JFrame {
         jButtonEditar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
+        jButtonPesquisar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Distribuidoras");
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jLabelId.setText("Id:");
 
@@ -106,6 +118,8 @@ public class GestaoDistribuidoras extends javax.swing.JFrame {
 
         jLabelNome.setText("Nome:");
         jLabelNome.setToolTipText("");
+
+        jTextFieldId.setEditable(false);
 
         try {
             jFormattedTextFieldFundacao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -120,11 +134,6 @@ public class GestaoDistribuidoras extends javax.swing.JFrame {
 
         jButtonEscolher.setText("Escolher");
         jButtonEscolher.setToolTipText("");
-        jButtonEscolher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEscolherActionPerformed(evt);
-            }
-        });
 
         jLabelExibirImagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelExibirImagem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -133,11 +142,15 @@ public class GestaoDistribuidoras extends javax.swing.JFrame {
         jButtonAdicionar.setToolTipText("");
 
         jButtonEditar.setText("Editar");
+        jButtonEditar.setEnabled(false);
 
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.setEnabled(false);
 
         jButtonSair.setText("Sair");
         jButtonSair.setToolTipText("");
+
+        jButtonPesquisar.setText("Pesquisar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,11 +178,13 @@ public class GestaoDistribuidoras extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonAdicionar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEditar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addComponent(jButtonPesquisar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonSair)))
                 .addContainerGap())
         );
@@ -194,39 +209,31 @@ public class GestaoDistribuidoras extends javax.swing.JFrame {
                     .addComponent(jTextFieldImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEscolher))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelExibirImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jLabelExibirImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAdicionar)
                     .addComponent(jButtonEditar)
                     .addComponent(jButtonExcluir)
-                    .addComponent(jButtonSair))
+                    .addComponent(jButtonSair)
+                    .addComponent(jButtonPesquisar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonEscolherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEscolherActionPerformed
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         // TODO add your handling code here:
-        JFileChooser fileChooser = new  JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            jTextFieldImagem.setText(fileChooser.getSelectedFile().getPath());
-            ImageIcon imagem = new ImageIcon(fileChooser.getSelectedFile().getPath());
-            if (imagem.getIconWidth() > jLabelExibirImagem.getWidth()) {
-                jLabelExibirImagem.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(jLabelExibirImagem.getWidth(),jLabelExibirImagem.getHeight(), Image.SCALE_DEFAULT)));
-            } else {
-                jLabelExibirImagem.setIcon(imagem);
-            }
-        }
-    }//GEN-LAST:event_jButtonEscolherActionPerformed
+        //System.out.println("oi");
+    }//GEN-LAST:event_formWindowGainedFocus
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEscolher;
     private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JFormattedTextField jFormattedTextFieldFundacao;
