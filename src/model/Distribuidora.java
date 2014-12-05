@@ -3,6 +3,8 @@ package model;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Distribuidora {
     private int id;
@@ -45,10 +47,17 @@ public class Distribuidora {
         this.nome = nome;
     }
     
-    public Date converteData(String sData) throws ParseException {
+    public Date converteData(String sData) {
         SimpleDateFormat sdf1 = new SimpleDateFormat("MM-dd-yyyy");
-        java.util.Date date = sdf1.parse(sData);
-        java.sql.Date sqlStartDate = new Date(date.getTime()); 
-        return sqlStartDate;
+        java.util.Date date;
+        try {
+            date = sdf1.parse(sData);
+            java.sql.Date sqlStartDate = new Date(date.getTime()); 
+            return sqlStartDate;
+        } catch (ParseException ex) {
+            Logger.getLogger(Distribuidora.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
     }
 }
