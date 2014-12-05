@@ -2,19 +2,11 @@ package model;
 
 public class JogoDep {
     private int id;
-    private Jogo jogo;
-    private Deposito deposito;
+    private int idJogo;
+    private int idDeposito;
     private int quantidade;
 
     public JogoDep() {
-    }
-
-    public Deposito getDeposito() {
-        return deposito;
-    }
-
-    public void setDeposito(Deposito deposito) {
-        this.deposito = deposito;
     }
 
     public int getId() {
@@ -25,14 +17,6 @@ public class JogoDep {
         this.id = id;
     }
 
-    public Jogo getJogo() {
-        return jogo;
-    }
-
-    public void setJogo(Jogo jogo) {
-        this.jogo = jogo;
-    }
-
     public int getQuantidade() {
         return quantidade;
     }
@@ -40,4 +24,20 @@ public class JogoDep {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+    public int getIdJogo() {
+        return idJogo;
+    }
+
+    public void setIdJogo(int idJogo) {
+        this.idJogo = idJogo;
+    }
+
+    public int getIdDeposito() {
+        return idDeposito;
+    }
+
+    public void setIdDeposito(int idDeposito) {
+        this.idDeposito = idDeposito;
+    } 
 }

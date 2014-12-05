@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class JogoDAO {
     private Connection connection;
-
+    
     public JogoDAO() {
         this.connection = ConnectionFactory.getConnection();
     }

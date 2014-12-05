@@ -17,7 +17,10 @@ import model.Genero;
 import model.GeneroDAO;
 import model.Jogo;
 import model.JogoDAO;
+import model.JogoDep;
+import model.JogoDepDAO;
 import view.GestaoJogos;
+import view.GestaoJogosDeposito;
 import view.GestaoJogosImagens;
 import view.ListaGeneros;
 import view.ListaJogos;
@@ -34,6 +37,8 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
     private FaixaEtariaDAO faixaEtariaDAO = null;
     private Deposito deposito = null;
     private DepositoDAO depositoDAO = null;
+    private JogoDep jogoDep = null;
+    private JogoDepDAO jogoDepDAO = null;
 
     public GestaoJogos getGestaoJogos() {
         return gestaoJogos;
@@ -51,11 +56,14 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
         this.faixaEtariaDAO = new FaixaEtariaDAO();
         this.deposito = new Deposito();
         this.depositoDAO = new DepositoDAO();
+        this.jogoDepDAO = new JogoDepDAO();
+        this.jogoDep = new JogoDep();
         
         this.gestaoJogos.getjButtonCadastrar().addActionListener(this);
         this.gestaoJogos.getjButtonEditar().addActionListener(this);
         this.gestaoJogos.getjButtonExcluir().addActionListener(this);
         this.gestaoJogos.getjButtonImagens().addActionListener(this);
+        this.gestaoJogos.getjButtonEstoque().addActionListener(this);
         this.gestaoJogos.getjButtonPesquisar().addActionListener(this);
         this.gestaoJogos.getjButtonSair().addActionListener(this);
         this.gestaoJogos.addWindowFocusListener(this);
@@ -84,6 +92,7 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
         this.gestaoJogos.getjButtonEditar().setEnabled(false);
         this.gestaoJogos.getjButtonExcluir().setEnabled(false);
         this.gestaoJogos.getjButtonImagens().setEnabled(false);
+        this.gestaoJogos.getjButtonEstoque().setEnabled(false);
     }
     
     //Função para listar as distribuidoras
@@ -244,6 +253,16 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
             GestaoJogosImagensController controllerGestaoJogosImagens = new GestaoJogosImagensController(viewGestaoJogosImagens, jogo);
             controllerGestaoJogosImagens.getGestaoJogosImagens().setVisible(true);
         }
+        //Estoque
+        else if (e.getSource() == this.gestaoJogos.getjButtonEstoque()) {
+            jogo.setId(Integer.parseInt(this.gestaoJogos.getjTextFieldId().getText()));
+            jogo.setNome(this.gestaoJogos.getjTextFieldNome().getText());
+            deposito = depositoDAO.posicionaDepositoDescricao((String) this.gestaoJogos.getjComboBoxDeposito().getSelectedItem());
+            
+            GestaoJogosDeposito viewGestaoJogosDeposito = new GestaoJogosDeposito();
+            GestaoJogosDepositoController controllerGestaoJogosDeposito = new GestaoJogosDepositoController(viewGestaoJogosDeposito, jogoDep, jogo, deposito);
+            controllerGestaoJogosDeposito.getGestaoJogosDeposito().setVisible(true);
+        }
         //Sair
         else if (e.getSource() == this.gestaoJogos.getjButtonSair()) {
             this.gestaoJogos.dispose();
@@ -297,6 +316,7 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
             gestaoJogos.getjButtonEditar().setEnabled(true);
             gestaoJogos.getjButtonExcluir().setEnabled(true);
             gestaoJogos.getjButtonImagens().setEnabled(true);
+            gestaoJogos.getjButtonEstoque().setEnabled(true);
             
             //Chama a função para exibir o cadastro
             exibeCadastro(jogo.getId());

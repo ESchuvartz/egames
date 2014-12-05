@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import model.Utilities;
 
 public class ListaFaixasEtarias extends javax.swing.JDialog {
-    Utilities utilities = new Utilities();
+    private Utilities utilities = new Utilities();
     /**
      * Creates new form ListaFaixaEtaria
      * @param parent

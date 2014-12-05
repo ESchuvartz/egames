@@ -4,7 +4,7 @@ import javax.swing.*;
 import model.Utilities;
 
 public class GestaoDistribuidoras extends javax.swing.JFrame {
-    Utilities utilities = new Utilities();
+    private Utilities utilities = new Utilities();
             
     public GestaoDistribuidoras() {
         initComponents();

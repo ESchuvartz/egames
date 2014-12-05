@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 import model.Utilities;
 
 public class GestaoFaixasEtarias extends javax.swing.JFrame {
-    Utilities utilities = new Utilities();
+    private Utilities utilities = new Utilities();
     
     public GestaoFaixasEtarias() {
         initComponents();

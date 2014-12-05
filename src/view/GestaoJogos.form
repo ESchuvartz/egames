@@ -40,18 +40,6 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jTextFieldNome" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldId" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jComboBoxDeposito" alignment="0" pref="203" max="32767" attributes="0"/>
-                              <Component id="jComboBoxFaixaEtaria" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBoxGenero" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBoxDistribuidora" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jButtonCadastrar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -64,6 +52,18 @@
                       <Component id="jButtonSair" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jComboBoxDeposito" alignment="0" pref="203" max="32767" attributes="0"/>
+                              <Component id="jComboBoxFaixaEtaria" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jComboBoxGenero" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jComboBoxDistribuidora" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jTextFieldId" min="-2" pref="60" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jFormattedTextFieldValor" pref="103" max="32767" attributes="0"/>
@@ -71,6 +71,8 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButtonImagens" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonEstoque" min="-2" pref="93" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -120,6 +122,7 @@
                   <Component id="jLabelClassificacao" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldClassificacao" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonImagens" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonEstoque" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -304,6 +307,15 @@
           <Image iconType="3" name="/images/Escolher.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Imagens"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonEstoque">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/ProdEstoque.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Estoque"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>

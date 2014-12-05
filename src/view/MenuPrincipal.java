@@ -8,7 +8,7 @@ import javax.swing.JSeparator;
 import model.Utilities;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-    Utilities utilities = new Utilities();
+    private Utilities utilities = new Utilities();
     
     public MenuPrincipal() {
         initComponents();

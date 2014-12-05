@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import model.Utilities;
 public class GestaoGeneros extends javax.swing.JFrame {
-    Utilities utilities = new Utilities();
+    private Utilities utilities = new Utilities();
     
     public GestaoGeneros() {
         initComponents();
