@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view;
 
 import javax.swing.JButton;
@@ -11,12 +5,10 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import model.Utilities;
 
-/**
- *
- * @author Eduardo
- */
 public class ListaDistribuidoras extends javax.swing.JDialog {
+    Utilities utilities = new Utilities();
     /**
      * Creates new form ListaDistribuidoras
      * @param parent
@@ -25,6 +17,9 @@ public class ListaDistribuidoras extends javax.swing.JDialog {
     public ListaDistribuidoras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        utilities.centralizarDialog(this);
+        setIconImage(utilities.adicionarIcone("/src/images/Listar.png"));
     }
 
     public JButton getjButtonPesquisar() {
@@ -77,6 +72,7 @@ public class ListaDistribuidoras extends javax.swing.JDialog {
 
         jLabelNomeBusca.setText("Nome:");
 
+        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Pesquisar.png"))); // NOI18N
         jButtonPesquisar.setText("Pesquisar");
 
         jTableDistribuidoras.setModel(new javax.swing.table.DefaultTableModel(
@@ -103,10 +99,16 @@ public class ListaDistribuidoras extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(jTableDistribuidoras);
+        if (jTableDistribuidoras.getColumnModel().getColumnCount() > 0) {
+            jTableDistribuidoras.getColumnModel().getColumn(0).setPreferredWidth(2);
+            jTableDistribuidoras.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTableDistribuidoras.getColumnModel().getColumn(2).setPreferredWidth(20);
+        }
 
         jLabelResultado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelResultado.setText("Distribuidoras encontradas:");
 
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Sair.png"))); // NOI18N
         jButtonSair.setText("Sair");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

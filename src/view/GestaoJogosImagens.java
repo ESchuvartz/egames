@@ -1,22 +1,78 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-/**
- *
- * @author eduardo.151294
- */
-public class GestaoJogosImagens extends javax.swing.JFrame {
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import model.Utilities;
 
-    /**
-     * Creates new form GestaoJogosImagens
-     */
+public class GestaoJogosImagens extends javax.swing.JFrame {
+    Utilities utilities = new Utilities();
+    
     public GestaoJogosImagens() {
         initComponents();
+        utilities.centralizarFrame(this);
+        setIconImage(utilities.adicionarIcone("/src/images/Jogos.png"));
     }
 
+    public JButton getjButtonSair() {
+        return jButtonSair;
+    }
+
+    public JButton getjButtonSelecionar() {
+        return jButtonSelecionar;
+    }
+    
+    public JLabel getjLabelImagensCadastradas() {
+        return jLabelImagensCadastradas;
+    }
+
+    public JLabel getjLabelSelecionarImagem() {
+        return jLabelSelecionarImagem;
+    }
+    
+    public JLabel getjLabelExibirImagem() {
+        return jLabelExibirImagem;
+    }
+
+    public JLabel getjLabelJogo() {
+        return jLabelJogo;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JSeparator getjSeparator1() {
+        return jSeparator1;
+    }
+
+    public JTable getjTableImagens() {
+        return jTableImagens;
+    }
+
+    public JTextField getjTextFieldId() {
+        return jTextFieldId;
+    }
+
+    public JTextField getjTextFieldImagem() {
+        return jTextFieldImagem;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public JButton getjButtonExcluir() {
+        return jButtonExcluir;
+    }
+
+    public JButton getjButtonIncluir() {
+        return jButtonIncluir;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,17 +82,139 @@ public class GestaoJogosImagens extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabelJogo = new javax.swing.JLabel();
+        jTextFieldId = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
+        jLabelExibirImagem = new javax.swing.JLabel();
+        jButtonSelecionar = new javax.swing.JButton();
+        jLabelSelecionarImagem = new javax.swing.JLabel();
+        jTextFieldImagem = new javax.swing.JTextField();
+        jLabelImagensCadastradas = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableImagens = new javax.swing.JTable();
+        jButtonSair = new javax.swing.JButton();
+        jButtonIncluir = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Imagens do Jogo");
+
+        jLabelJogo.setText("Jogo:");
+
+        jTextFieldId.setEditable(false);
+
+        jTextFieldNome.setEditable(false);
+
+        jLabelExibirImagem.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jButtonSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Escolher.png"))); // NOI18N
+        jButtonSelecionar.setText("Selecionar");
+
+        jLabelSelecionarImagem.setText("Imagem:");
+
+        jLabelImagensCadastradas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelImagensCadastradas.setText("Imagens já cadastradas para este jogo:");
+        jLabelImagensCadastradas.setVerifyInputWhenFocusTarget(false);
+
+        jTableImagens.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Seq.", "Seq. Única", "Imagem"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableImagens);
+
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Sair.png"))); // NOI18N
+        jButtonSair.setText("Sair");
+
+        jButtonIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Adicionar.png"))); // NOI18N
+        jButtonIncluir.setText("Incluir");
+
+        jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Excluir.png"))); // NOI18N
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonIncluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSair))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabelJogo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelSelecionarImagem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldImagem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonSelecionar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabelImagensCadastradas))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelExibirImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelJogo)
+                    .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSelecionarImagem)
+                    .addComponent(jTextFieldImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSelecionar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelImagensCadastradas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jLabelExibirImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonIncluir)
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButtonSair))
+                .addGap(5, 5, 5))
         );
 
         pack();
@@ -44,5 +222,19 @@ public class GestaoJogosImagens extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonIncluir;
+    private javax.swing.JButton jButtonSair;
+    private javax.swing.JButton jButtonSelecionar;
+    private javax.swing.JLabel jLabelExibirImagem;
+    private javax.swing.JLabel jLabelImagensCadastradas;
+    private javax.swing.JLabel jLabelJogo;
+    private javax.swing.JLabel jLabelSelecionarImagem;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTableImagens;
+    private javax.swing.JTextField jTextFieldId;
+    private javax.swing.JTextField jTextFieldImagem;
+    private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
 }

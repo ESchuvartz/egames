@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view;
 
 import javax.swing.JButton;
@@ -11,19 +5,19 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import model.Utilities;
 
-/**
- *
- * @author Eduardo
- */
 public class ListaJogos extends javax.swing.JDialog {
-
+    Utilities utilities = new Utilities();
     /**
      * Creates new form ListaJogos
      */
     public ListaJogos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        utilities.centralizarDialog(this);
+        setIconImage(utilities.adicionarIcone("/src/images/Listar.png"));
     }
 
     public JButton getjButtonPesquisar() {
@@ -76,6 +70,7 @@ public class ListaJogos extends javax.swing.JDialog {
 
         jLabelNome.setText("Nome:");
 
+        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Pesquisar.png"))); // NOI18N
         jButtonPesquisar.setText("Pesquisar");
 
         jLabelResultado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -106,9 +101,10 @@ public class ListaJogos extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jTablePesquisa);
         if (jTablePesquisa.getColumnModel().getColumnCount() > 0) {
-            jTablePesquisa.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTablePesquisa.getColumnModel().getColumn(1).setPreferredWidth(300);
         }
 
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Sair.png"))); // NOI18N
         jButtonSair.setText("Sair");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,21 +115,21 @@ public class ListaJogos extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelResultado)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonSair)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(5, 5, 5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelResultado)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonPesquisar)))
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(jButtonPesquisar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButtonSair))
+                            .addComponent(jScrollPane1))
+                        .addGap(5, 5, 5))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

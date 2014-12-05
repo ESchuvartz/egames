@@ -1,21 +1,21 @@
 package view;
 
 import javax.swing.*;
+import model.Utilities;
 
 public class GestaoDistribuidoras extends javax.swing.JFrame {
-    /**
-     * Creates new form GestaoDistribuidoras
-     * @return 
-     */
+    Utilities utilities = new Utilities();
+            
+    public GestaoDistribuidoras() {
+        initComponents();
+        utilities.centralizarFrame(this);
+        setIconImage(utilities.adicionarIcone("/src/images/Distribuidoras.png"));
+    }
     
     public JButton getjButtonPesquisar() {
         return jButtonPesquisar;
     }
-
-    public GestaoDistribuidoras() {
-        initComponents();
-    }
-
+        
     public JButton getjButtonAdicionar() {
         return jButtonAdicionar;
     }
@@ -132,24 +132,30 @@ public class GestaoDistribuidoras extends javax.swing.JFrame {
 
         jTextFieldImagem.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
+        jButtonEscolher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Escolher.png"))); // NOI18N
         jButtonEscolher.setText("Escolher");
         jButtonEscolher.setToolTipText("");
 
         jLabelExibirImagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelExibirImagem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jLabelExibirImagem.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jButtonAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Adicionar.png"))); // NOI18N
         jButtonAdicionar.setText("Adicionar");
         jButtonAdicionar.setToolTipText("");
 
+        jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Editar.png"))); // NOI18N
         jButtonEditar.setText("Editar");
         jButtonEditar.setEnabled(false);
 
+        jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Excluir.png"))); // NOI18N
         jButtonExcluir.setText("Excluir");
         jButtonExcluir.setEnabled(false);
 
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Sair.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.setToolTipText("");
 
+        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Pesquisar.png"))); // NOI18N
         jButtonPesquisar.setText("Pesquisar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,7 +188,7 @@ public class GestaoDistribuidoras extends javax.swing.JFrame {
                         .addComponent(jButtonEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addComponent(jButtonPesquisar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonSair)))

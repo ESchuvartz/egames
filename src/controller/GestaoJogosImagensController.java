@@ -7,15 +7,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.IOException;
 import java.util.ArrayList;
-import static javax.swing.GroupLayout.Alignment.CENTER;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Jogo;
-import model.JogoDAO;
 import model.JogoImagem;
 import model.JogoImagemDAO;
 import model.Utilities;
@@ -98,16 +94,12 @@ public class GestaoJogosImagensController implements ActionListener, WindowListe
         //Incluir
         else if (e.getSource() == this.gestaoJogosImagens.getjButtonIncluir()) {
             jogoImagem.setIdJogo(Integer.parseInt(this.gestaoJogosImagens.getjTextFieldId().getText()));
-            try {
-                //Chama a função para criar a pasta
-                utilities.criaPasta("/src/images/Jogos/" + jogoImagem.getIdJogo());
-                
-                //Chama a função para copiar a imagem para a pasta criada
-                jogoImagem.setImagem(utilities.copiaImagem(this.gestaoJogosImagens.getjTextFieldImagem().getText(), "/src/images/Jogos/" + jogoImagem.getIdJogo() + "/"));
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao copiar imagem do jogo", JOptionPane.ERROR_MESSAGE);
-            }
-            
+            //Chama a função para criar a pasta
+            utilities.criaPasta("/src/images/Jogos/" + jogoImagem.getIdJogo());
+
+            //Chama a função para copiar a imagem para a pasta criada
+            jogoImagem.setImagem(utilities.copiaImagem(this.gestaoJogosImagens.getjTextFieldImagem().getText(), "/src/images/Jogos/" + jogoImagem.getIdJogo() + "/"));
+
             //Chama a função para cadastrar a imagem do jogo
             jogoImagemDAO.cadastrarJogoImagem(jogoImagem);
             

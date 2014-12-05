@@ -1,26 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-/**
- *
- * @author Eduardo
- */
+import model.Utilities;
 public class GestaoGeneros extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GestaoGeneros
-     */
+    Utilities utilities = new Utilities();
+    
     public GestaoGeneros() {
         initComponents();
+        utilities.centralizarFrame(this);
+        setIconImage(utilities.adicionarIcone("/src/images/Genero.png"));
     }
 
     public JButton getjButtonAdicionar() {
@@ -90,16 +80,21 @@ public class GestaoGeneros extends javax.swing.JFrame {
 
         jTextFieldDescricao.setToolTipText("");
 
+        jButtonAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Adicionar.png"))); // NOI18N
         jButtonAdicionar.setText("Adicionar");
 
+        jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Editar.png"))); // NOI18N
         jButtonEditar.setText("Editar");
         jButtonEditar.setEnabled(false);
 
+        jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Excluir.png"))); // NOI18N
         jButtonExcluir.setText("Excluir");
         jButtonExcluir.setEnabled(false);
 
+        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Pesquisar.png"))); // NOI18N
         jButtonPesquisar.setText("Pesquisar");
 
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Sair.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.setToolTipText("");
 
@@ -120,7 +115,7 @@ public class GestaoGeneros extends javax.swing.JFrame {
                         .addComponent(jButtonEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonPesquisar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonSair))
@@ -141,7 +136,7 @@ public class GestaoGeneros extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDescricao))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAdicionar)
                     .addComponent(jButtonEditar)

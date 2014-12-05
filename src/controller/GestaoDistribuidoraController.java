@@ -91,17 +91,9 @@ public class GestaoDistribuidoraController implements ActionListener, WindowFocu
         //Adicionar
         if (e.getSource() == this.gestaoDistribuidoras.getjButtonAdicionar()) {
             distribuidora.setNome(this.gestaoDistribuidoras.getjTextFieldNome().getText());
-            try {
-                distribuidora.setFundacao(utilities.converteData(this.gestaoDistribuidoras.getjFormattedTextFieldFundacao().getText()));
-            } catch (ParseException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao converter data de fundação", JOptionPane.ERROR_MESSAGE);
-            }
-            try {
-                distribuidora.setImagem(utilities.copiaImagem(this.gestaoDistribuidoras.getjTextFieldImagem().getText(), "/src/images/Distribuidoras/"));
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao copiar imagem", JOptionPane.ERROR_MESSAGE);
-            }
-            
+            distribuidora.setFundacao(utilities.converteData(this.gestaoDistribuidoras.getjFormattedTextFieldFundacao().getText()));
+            distribuidora.setImagem(utilities.copiaImagem(this.gestaoDistribuidoras.getjTextFieldImagem().getText(), "/src/images/Distribuidoras/"));
+
             //Chama a função para adicionar a distribuidora
             distribuidoraDAO.cadastraDistribuidora(distribuidora);
             
@@ -112,19 +104,12 @@ public class GestaoDistribuidoraController implements ActionListener, WindowFocu
         else if (e.getSource() == this.gestaoDistribuidoras.getjButtonEditar()) {
             distribuidora.setId(Integer.parseInt(this.gestaoDistribuidoras.getjTextFieldId().getText()));
             distribuidora.setNome(this.gestaoDistribuidoras.getjTextFieldNome().getText());
-            try {
-                distribuidora.setFundacao(utilities.converteData(this.gestaoDistribuidoras.getjFormattedTextFieldFundacao().getText()));
-            } catch (ParseException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao converter data de fundação", JOptionPane.ERROR_MESSAGE);
-            }
-            try {
-                if (!this.gestaoDistribuidoras.getjTextFieldImagem().getText().contains("src/images/Distribuidoras/")) {
-                    distribuidora.setImagem(utilities.copiaImagem(this.gestaoDistribuidoras.getjTextFieldImagem().getText(), "/src/images/Distribuidoras/"));
-                } else {
-                    distribuidora.setImagem(this.gestaoDistribuidoras.getjTextFieldImagem().getText());
-                }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao copiar imagem", JOptionPane.ERROR_MESSAGE);
+            distribuidora.setFundacao(utilities.converteData(this.gestaoDistribuidoras.getjFormattedTextFieldFundacao().getText()));
+
+            if (!this.gestaoDistribuidoras.getjTextFieldImagem().getText().contains("src/images/Distribuidoras/")) {
+                distribuidora.setImagem(utilities.copiaImagem(this.gestaoDistribuidoras.getjTextFieldImagem().getText(), "/src/images/Distribuidoras/"));
+            } else {
+                distribuidora.setImagem(this.gestaoDistribuidoras.getjTextFieldImagem().getText());
             }
             
             //Chama a função parar editar a distribuidora

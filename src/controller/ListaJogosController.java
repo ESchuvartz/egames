@@ -35,8 +35,6 @@ public class ListaJogosController implements ActionListener, MouseListener {
         
         DefaultTableModel model = (DefaultTableModel) this.listaJogos.getjTablePesquisa().getModel();
         
-        this.listaJogos.getjTablePesquisa().getColumnModel().getColumn(1).setPreferredWidth(500);
-        
         for (Jogo jogo1 : jogos) {
             model.addRow(new Object[]{jogo1.getId(), jogo1.getNome(), String.valueOf(jogo1.getValor()).replace(".", ",")});
         }

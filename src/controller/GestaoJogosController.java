@@ -18,6 +18,7 @@ import model.GeneroDAO;
 import model.Jogo;
 import model.JogoDAO;
 import view.GestaoJogos;
+import view.GestaoJogosImagens;
 import view.ListaGeneros;
 import view.ListaJogos;
 
@@ -82,6 +83,7 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
         this.gestaoJogos.getjButtonCadastrar().setEnabled(true);
         this.gestaoJogos.getjButtonEditar().setEnabled(false);
         this.gestaoJogos.getjButtonExcluir().setEnabled(false);
+        this.gestaoJogos.getjButtonImagens().setEnabled(false);
     }
     
     //Função para listar as distribuidoras
@@ -235,7 +237,12 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
         }
         //Imagens
         else if (e.getSource() == this.gestaoJogos.getjButtonImagens()) {
+            jogo.setId(Integer.parseInt(this.gestaoJogos.getjTextFieldId().getText()));
+            jogo.setNome(this.gestaoJogos.getjTextFieldNome().getText());
             
+            GestaoJogosImagens viewGestaoJogosImagens = new GestaoJogosImagens();
+            GestaoJogosImagensController controllerGestaoJogosImagens = new GestaoJogosImagensController(viewGestaoJogosImagens, jogo);
+            controllerGestaoJogosImagens.getGestaoJogosImagens().setVisible(true);
         }
         //Sair
         else if (e.getSource() == this.gestaoJogos.getjButtonSair()) {
@@ -289,6 +296,7 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
             gestaoJogos.getjButtonCadastrar().setEnabled(false);
             gestaoJogos.getjButtonEditar().setEnabled(true);
             gestaoJogos.getjButtonExcluir().setEnabled(true);
+            gestaoJogos.getjButtonImagens().setEnabled(true);
             
             //Chama a função para exibir o cadastro
             exibeCadastro(jogo.getId());

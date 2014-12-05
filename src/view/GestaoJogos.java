@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view;
 
 import javax.swing.JButton;
@@ -13,18 +7,15 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import model.Utilities;
 
-/**
- *
- * @author Eduardo
- */
 public class GestaoJogos extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GestaoJogos
-     */
+    Utilities utilities = new Utilities();
+    
     public GestaoJogos() {
         initComponents();
+        utilities.centralizarFrame(this);
+        setIconImage(utilities.adicionarIcone("/src/images/Jogos.png"));
     }
 
     public JButton getjButtonCadastrar() {
@@ -197,21 +188,33 @@ public class GestaoJogos extends javax.swing.JFrame {
         jTextAreaReview.setRows(5);
         jScrollPane1.setViewportView(jTextAreaReview);
 
+        jButtonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Adicionar.png"))); // NOI18N
         jButtonCadastrar.setText("Cadastrar");
 
+        jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Editar.png"))); // NOI18N
         jButtonEditar.setText("Editar");
         jButtonEditar.setEnabled(false);
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
 
+        jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Excluir.png"))); // NOI18N
         jButtonExcluir.setText("Excluir");
         jButtonExcluir.setEnabled(false);
 
+        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Pesquisar.png"))); // NOI18N
         jButtonPesquisar.setText("Pesquisar");
 
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Sair.png"))); // NOI18N
         jButtonSair.setText("Sair");
 
         jLabelDeposito.setText("Depósito:");
 
+        jButtonImagens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Escolher.png"))); // NOI18N
         jButtonImagens.setText("Imagens");
+        jButtonImagens.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -299,7 +302,7 @@ public class GestaoJogos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelReview)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonPesquisar)
@@ -317,6 +320,10 @@ public class GestaoJogos extends javax.swing.JFrame {
     private void jFormattedTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldValorActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
