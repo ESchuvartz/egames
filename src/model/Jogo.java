@@ -2,7 +2,7 @@ package model;
 
 public class Jogo {
     private int id;
-    private String descricao;
+    private String nome;
     private Distribuidora distribuidora;
     private Genero genero;
     private FaixaEtaria faixaEtaria;
@@ -32,11 +32,11 @@ public class Jogo {
     }
 
     public String getDescricao() {
-        return descricao;
+        return nome;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescricao(String nome) {
+        this.nome = nome;
     }
 
     public Distribuidora getDistribuidora() {

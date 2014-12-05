@@ -1,10 +1,14 @@
 package model;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.sql.Date;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Distribuidora {
     private int id;
@@ -45,19 +49,5 @@ public class Distribuidora {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-    
-    public Date converteData(String sData) {
-        SimpleDateFormat sdf1 = new SimpleDateFormat("MM-dd-yyyy");
-        java.util.Date date;
-        try {
-            date = sdf1.parse(sData);
-            java.sql.Date sqlStartDate = new Date(date.getTime()); 
-            return sqlStartDate;
-        } catch (ParseException ex) {
-            Logger.getLogger(Distribuidora.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return null;
     }
 }
