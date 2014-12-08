@@ -22,8 +22,10 @@ import model.Jogo;
 import model.JogoDAO;
 import model.JogoDep;
 import model.JogoDepDAO;
+import model.JogoImagem;
 import view.ConsultaJogos;
 import view.ConsultaJogosAvaliacoes;
+import view.ConsultaJogosImagens;
 
 public class ConsultaJogosController implements ActionListener, MouseListener, WindowListener {
     private ConsultaJogos consultaJogos = null;
@@ -193,7 +195,10 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
         }
         //Imagens
         else if (e.getSource() == this.consultaJogos.getjButtonImagens()) {
-            
+            ConsultaJogosImagens viewConsultaJogosImagens = new ConsultaJogosImagens();
+            JogoImagem jogoImagem = new JogoImagem();
+            ConsultaJogosImagensController controllerJogosImagens = new ConsultaJogosImagensController(viewConsultaJogosImagens, jogo, jogoImagem);
+            controllerJogosImagens.getConsultaJogosImagens().setVisible(true);
         }
         //Avaliar
         else if (e.getSource() == this.consultaJogos.getjButtonAvaliar()) {

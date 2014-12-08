@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class ConnectionFactory {
-    public static  java.sql.Connection getConnection() {
+    public static java.sql.Connection getConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             

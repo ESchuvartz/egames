@@ -10,6 +10,7 @@ import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import model.Jogo;
 import model.JogoImagem;
@@ -61,6 +62,8 @@ public class GestaoJogosImagensController implements ActionListener, WindowListe
         } else {
             this.gestaoJogosImagens.getjLabelExibirImagem().setIcon(null);
         }
+        
+        this.gestaoJogosImagens.getjLabelExibirImagem().setHorizontalAlignment(SwingConstants.CENTER);
     }
     
     //Função para listar as imagens do jogo

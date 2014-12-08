@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.SwingConstants;
 import model.Distribuidora;
 import model.DistribuidoraDAO;
 import model.Utilities;
@@ -65,6 +66,8 @@ public class GestaoDistribuidoraController implements ActionListener, WindowFocu
             } else {
                 this.gestaoDistribuidoras.getjLabelExibirImagem().setIcon(imagem);
             }
+            
+            this.getGestaoDistribuidoras().getjLabelExibirImagem().setHorizontalAlignment(SwingConstants.CENTER);
         }
     }
     

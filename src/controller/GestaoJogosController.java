@@ -226,7 +226,7 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
             jogo.setIdFaixaEtaria(faixaEtaria.getId());
             jogo.setIdDeposito(deposito.getId());
             jogo.setValor(Double.parseDouble(this.gestaoJogos.getjFormattedTextFieldValor().getText().replace(",", ".")));
-            jogo.setClassificacao(Integer.parseInt(this.gestaoJogos.getjTextFieldClassificacao().getText()));
+            jogo.setClassificacao(Integer.parseInt(this.gestaoJogos.getjTextFieldClassificacao().getText().replace(",", ".")));
             jogo.setReview(this.gestaoJogos.getjTextAreaReview().getText());
             
             //Chama a função para cadastrar o jogo

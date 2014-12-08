@@ -75,6 +75,7 @@ public class GestaoJogosDeposito extends javax.swing.JFrame {
         jButtonMovimentar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Estoque do Jogo");
 
         jLabelJogo.setText("Jogo:");
 
