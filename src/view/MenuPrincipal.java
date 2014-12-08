@@ -1,5 +1,6 @@
 package view;
 
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -79,13 +80,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return jMenuBarPrincipal;
     }
 
+    public JMenuItem getjMenuItemJogos() {
+        return jMenuItemJogos;
+    }
+
+    public JLabel getjLabelBackground() {
+        return jLabelBackground;
+    }
+
     public JMenuItem getjMenuItem1() {
         return jMenuItem1;
     }
 
-    public JMenuItem getjMenuItemJogos() {
-        return jMenuItemJogos;
+    public JMenuItem getjMenuItemBuscaJogos() {
+        return jMenuItemBuscaJogos;
     }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,6 +124,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuEstoque = new javax.swing.JMenu();
         jMenuItemDepositos = new javax.swing.JMenuItem();
         jMenuConsultas = new javax.swing.JMenu();
+        jMenuItemBuscaJogos = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -170,6 +181,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBarPrincipal.add(jMenuEstoque);
 
         jMenuConsultas.setText("Consultas");
+
+        jMenuItemBuscaJogos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemBuscaJogos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BuscarJogo.png"))); // NOI18N
+        jMenuItemBuscaJogos.setText("Buscar Jogos");
+        jMenuConsultas.add(jMenuItemBuscaJogos);
+
         jMenuBarPrincipal.add(jMenuConsultas);
 
         setJMenuBar(jMenuBarPrincipal);
@@ -184,7 +201,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 109, Short.MAX_VALUE))
         );
 
         pack();
@@ -201,6 +218,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuConsultas;
     private javax.swing.JMenu jMenuEstoque;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemBuscaJogos;
     private javax.swing.JMenuItem jMenuItemDepositos;
     private javax.swing.JMenuItem jMenuItemDistribuidoras;
     private javax.swing.JMenuItem jMenuItemFaixasEtarias;
