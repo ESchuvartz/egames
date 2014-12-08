@@ -224,6 +224,7 @@ public class GestaoJogos extends javax.swing.JFrame {
         jButtonEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ProdEstoque.png"))); // NOI18N
         jButtonEstoque.setText("Estoque");
         jButtonEstoque.setEnabled(false);
+        jButtonEstoque.setIconTextGap(9);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -271,7 +272,7 @@ public class GestaoJogos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonImagens)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonEstoque)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

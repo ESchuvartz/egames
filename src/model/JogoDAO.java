@@ -70,7 +70,7 @@ public class JogoDAO {
             
             JOptionPane.showMessageDialog(null, ("Cadastro do jogo excluído com sucesso!"));
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao editar cadastro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao excluir cadastro", JOptionPane.ERROR_MESSAGE);
         }
     }
     

@@ -20,39 +20,42 @@ import javax.swing.JOptionPane;
 public class Utilities {
     //Função utilizada para copiar uma imagem de um local para outro, e retornar o novo caminho
     public String copiaImagem(String sImagem, String sDiretorio) {
-        System.out.println(sImagem);
-        System.out.println(sDiretorio);
-        //Exemplo de diretório: /src/images/Distribuidoras/
-        String[] sArray = sImagem.split("\\\\");
-        String sNomeArquivo = sArray[sArray.length-1];
-        FileInputStream origem;   
-        FileOutputStream destino;  
-  
-        FileChannel fcOrigem;  
-        FileChannel fcDestino;  
-        
-        try {
-            //Arquivo a ser copiado
-            origem = new FileInputStream(sImagem);
-            
-            //Local onde irá ficar a cópia do arquivo
-            destino = new FileOutputStream(System.getProperty("user.dir") + sDiretorio + sNomeArquivo);
-  
-            fcOrigem = origem.getChannel();  
-            fcDestino = destino.getChannel();  
-  
-            //Copia o arquivo e salva no diretório especificado
-            fcOrigem.transferTo(0, fcOrigem.size(), fcDestino); 
-  
-            origem.close();  
-            destino.close();  
-        } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao copiar imagem", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao copiar imagem", JOptionPane.ERROR_MESSAGE);
+        if (!sImagem.trim().isEmpty()) {
+            System.out.println(sImagem);
+            System.out.println(sDiretorio);
+            //Exemplo de diretório: /src/images/Distribuidoras/
+            String[] sArray = sImagem.split("\\\\");
+            String sNomeArquivo = sArray[sArray.length-1];
+            FileInputStream origem;   
+            FileOutputStream destino;  
+
+            FileChannel fcOrigem;  
+            FileChannel fcDestino;  
+
+            try {
+                //Arquivo a ser copiado
+                origem = new FileInputStream(sImagem);
+
+                //Local onde irá ficar a cópia do arquivo
+                destino = new FileOutputStream(System.getProperty("user.dir") + sDiretorio + sNomeArquivo);
+
+                fcOrigem = origem.getChannel();  
+                fcDestino = destino.getChannel();  
+
+                //Copia o arquivo e salva no diretório especificado
+                fcOrigem.transferTo(0, fcOrigem.size(), fcDestino); 
+
+                origem.close();  
+                destino.close();  
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao copiar imagem", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao copiar imagem", JOptionPane.ERROR_MESSAGE);
+            }
+
+            return (sDiretorio+sNomeArquivo);
         }
-        
-        return (sDiretorio+sNomeArquivo);
+        return null;
     }
     
     //Função utilizada para converter uma sting para um SQL Date

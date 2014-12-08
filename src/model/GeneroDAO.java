@@ -46,7 +46,7 @@ public class GeneroDAO {
     }
     
     public void excluiGenero (Genero genero) {
-        String sql = "DELETE from genero WHERE id = ?";
+        String sql = "DELETE FROM genero WHERE id = ?";
         
         try (PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, genero.getId());

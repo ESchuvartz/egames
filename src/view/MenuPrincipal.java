@@ -86,10 +86,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public JMenuItem getjMenuItemJogos() {
         return jMenuItemJogos;
     }
-
-    public JPopupMenu.Separator getjSeparator4() {
-        return jSeparator4;
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,7 +113,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItemJogos = new javax.swing.JMenuItem();
         jMenuEstoque = new javax.swing.JMenu();
         jMenuItemDepositos = new javax.swing.JMenuItem();
-        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuConsultas = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -171,7 +166,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItemDepositos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Depositos.png"))); // NOI18N
         jMenuItemDepositos.setText("Depósitos");
         jMenuEstoque.add(jMenuItemDepositos);
-        jMenuEstoque.add(jSeparator4);
 
         jMenuBarPrincipal.add(jMenuEstoque);
 
@@ -189,7 +183,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabelBackground)
+                .addComponent(jLabelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -215,6 +209,5 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
-    private javax.swing.JPopupMenu.Separator jSeparator4;
     // End of variables declaration//GEN-END:variables
 }

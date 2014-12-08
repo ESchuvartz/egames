@@ -31,14 +31,13 @@ public class JogoImagemDAO {
     }
     
     public void excluiJogoImagem (JogoImagem jogoImagem) {
-        String sql = "DELETE FROM jogoimagem WHERE id = ?";
+        String sql = "DELETE FROM jogoimagem WHERE idjogo = ?";
         try (PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, jogoImagem.getIdJogo());
             
             st.execute();
             st.close();
             
-            JOptionPane.showMessageDialog(null, ("Imagem deletada do cadastro do jogo com sucesso!"));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao deletar imagem do jogo", JOptionPane.ERROR_MESSAGE);
         }
