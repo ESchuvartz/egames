@@ -58,6 +58,8 @@ public class GestaoJogosImagensController implements ActionListener, WindowListe
             } else {
                 this.gestaoJogosImagens.getjLabelExibirImagem().setIcon(imagem);
             }
+        } else {
+            this.gestaoJogosImagens.getjLabelExibirImagem().setIcon(null);
         }
     }
     
@@ -101,7 +103,7 @@ public class GestaoJogosImagensController implements ActionListener, WindowListe
             jogoImagem.setImagem(utilities.copiaImagem(this.gestaoJogosImagens.getjTextFieldImagem().getText(), "/src/images/Jogos/" + jogoImagem.getIdJogo() + "/"));
 
             //Chama a função para cadastrar a imagem do jogo
-            jogoImagemDAO.cadastrarJogoImagem(jogoImagem);
+            jogoImagemDAO.cadastraJogoImagem(jogoImagem);
             
             //Chama a função para limpar a view
             limpaView();
@@ -111,7 +113,13 @@ public class GestaoJogosImagensController implements ActionListener, WindowListe
         }
         //Excluir
         else if (e.getSource() == this.gestaoJogosImagens.getjButtonExcluir()) {
+            //Chama o método para excluir a imagem
+            jogoImagemDAO.excluiJogoImagemSeq(jogoImagem);
             
+            //Chama o método para listar as imagens novamente
+            listaJogoImagens(jogoImagem.getIdJogo());
+            
+            exibeImagem("");
         }
         //Sair
         else if (e.getSource() == this.gestaoJogosImagens.getjButtonSair()) {

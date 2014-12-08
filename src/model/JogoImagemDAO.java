@@ -15,7 +15,7 @@ public class JogoImagemDAO {
         this.connection = ConnectionFactory.getConnection();
     }
     
-    public void cadastrarJogoImagem (JogoImagem jogoImagem) {
+    public void cadastraJogoImagem (JogoImagem jogoImagem) {
         String sql = "INSERT INTO jogoimagem (idjogo, imagem) VALUES (?, ?)";
         try (PreparedStatement st = connection.prepareStatement(sql)) {
             st.setInt(1, jogoImagem.getIdJogo());
@@ -30,10 +30,10 @@ public class JogoImagemDAO {
         }
     }
     
-    public void excluiJogoImagem (JogoImagem jogoImagem) {
-        String sql = "DELETE FROM jogoimagem WHERE idjogo = ?";
+    public void excluiJogoImagemSeq (JogoImagem jogoImagem) {
+        String sql = "DELETE FROM jogoimagem WHERE seq = ?";
         try (PreparedStatement st = connection.prepareStatement(sql)) {
-            st.setInt(1, jogoImagem.getIdJogo());
+            st.setInt(1, jogoImagem.getSequencia());
             
             st.execute();
             st.close();

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.sql.Date;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.swing.JDialog;
@@ -21,8 +22,6 @@ public class Utilities {
     //Função utilizada para copiar uma imagem de um local para outro, e retornar o novo caminho
     public String copiaImagem(String sImagem, String sDiretorio) {
         if (!sImagem.trim().isEmpty()) {
-            System.out.println(sImagem);
-            System.out.println(sDiretorio);
             //Exemplo de diretório: /src/images/Distribuidoras/
             String[] sArray = sImagem.split("\\\\");
             String sNomeArquivo = sArray[sArray.length-1];
@@ -106,5 +105,11 @@ public class Utilities {
     //Função utilizada para incluir um ícone na tela
     public Image adicionarIcone (String sIcone) {
         return (Toolkit.getDefaultToolkit().getImage(System.getProperty("user.dir") + sIcone));
+    }
+    
+    //Função para ajustar as casas decimais
+    public String ajustaDecimais (Double valor) {
+        DecimalFormat df = new DecimalFormat("0.##");
+        return df.format(valor);
     }
 }

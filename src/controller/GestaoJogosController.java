@@ -19,6 +19,9 @@ import model.Jogo;
 import model.JogoDAO;
 import model.JogoDep;
 import model.JogoDepDAO;
+import model.JogoImagem;
+import model.JogoImagemDAO;
+import model.Utilities;
 import view.GestaoJogos;
 import view.GestaoJogosDeposito;
 import view.GestaoJogosImagens;
@@ -39,6 +42,9 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
     private DepositoDAO depositoDAO = null;
     private JogoDep jogoDep = null;
     private JogoDepDAO jogoDepDAO = null;
+    private JogoImagem jogoImagem = null;
+    private JogoImagemDAO jogoImagemDAO = null;
+    private Utilities utilities = null;
 
     public GestaoJogos getGestaoJogos() {
         return gestaoJogos;
@@ -58,6 +64,9 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
         this.depositoDAO = new DepositoDAO();
         this.jogoDepDAO = new JogoDepDAO();
         this.jogoDep = new JogoDep();
+        this.jogoImagem = new JogoImagem();
+        this.jogoImagemDAO = new JogoImagemDAO();
+        this.utilities = new Utilities();
         
         this.gestaoJogos.getjButtonCadastrar().addActionListener(this);
         this.gestaoJogos.getjButtonEditar().addActionListener(this);
@@ -161,7 +170,7 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
         this.gestaoJogos.getjComboBoxFaixaEtaria().setSelectedItem(faixaEtaria.getDescricao());
         this.gestaoJogos.getjComboBoxDeposito().setSelectedItem(deposito.getDescricao());
         this.gestaoJogos.getjFormattedTextFieldValor().setText("" + String.valueOf(jogo.getValor()).replace(".", ","));
-        this.gestaoJogos.getjTextFieldClassificacao().setText("" + jogo.getClassificacao());
+        this.gestaoJogos.getjTextFieldClassificacao().setText(utilities.ajustaDecimais(jogo.getClassificacao()));
         this.gestaoJogos.getjTextAreaReview().setText(jogo.getReview());
     }
     
@@ -217,7 +226,7 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
             jogo.setIdFaixaEtaria(faixaEtaria.getId());
             jogo.setIdDeposito(deposito.getId());
             jogo.setValor(Double.parseDouble(this.gestaoJogos.getjFormattedTextFieldValor().getText().replace(",", ".")));
-            jogo.setClassificacao(0);
+            jogo.setClassificacao(Integer.parseInt(this.gestaoJogos.getjTextFieldClassificacao().getText()));
             jogo.setReview(this.gestaoJogos.getjTextAreaReview().getText());
             
             //Chama a função para cadastrar o jogo
@@ -259,6 +268,15 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
             jogo.setNome(this.gestaoJogos.getjTextFieldNome().getText());
             deposito = depositoDAO.posicionaDepositoDescricao((String) this.gestaoJogos.getjComboBoxDeposito().getSelectedItem());
             
+            //Chama uma função para verificar se o jogo possui o depósito cadastrado
+            jogoDep = jogoDepDAO.buscaEstoqueJogo(jogo.getId(), deposito.getId());
+            if (jogoDep.getId() == 0) {
+                jogoDep.setIdJogo(jogo.getId());
+                jogoDep.setIdDeposito(deposito.getId());
+                jogoDep.setQuantidade(0);
+                jogoDepDAO.cadastraJogoDeposito(jogoDep);
+            }
+            
             GestaoJogosDeposito viewGestaoJogosDeposito = new GestaoJogosDeposito();
             GestaoJogosDepositoController controllerGestaoJogosDeposito = new GestaoJogosDepositoController(viewGestaoJogosDeposito, jogoDep, jogo, deposito);
             controllerGestaoJogosDeposito.getGestaoJogosDeposito().setVisible(true);
@@ -291,17 +309,19 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
 
     @Override
     public void windowActivated(WindowEvent we) {
-        //Chama a função para carregar as distribuidoras cadastradas do sistema
-        listaDistribuidoras("");
-        
-        //Chama a função para carregar os gêneros cadastrados do sistema
-        listaGeneros("");
-        
-        //Chama a função para carregar as faixas etárias do sistema
-        listaFaixasEtarias("");
-        
-        //Chama a função para carregar os depósitos do sistema
-        listaDepositos("");
+        if (this.gestaoJogos.getjTextFieldId().getText().isEmpty()) {
+            //Chama a função para carregar as distribuidoras cadastradas do sistema
+            listaDistribuidoras("");
+
+            //Chama a função para carregar os gêneros cadastrados do sistema
+            listaGeneros("");
+
+            //Chama a função para carregar as faixas etárias do sistema
+            listaFaixasEtarias("");
+
+            //Chama a função para carregar os depósitos do sistema
+            listaDepositos("");
+        }
     }
 
     @Override

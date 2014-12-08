@@ -7,6 +7,7 @@ import model.Distribuidora;
 import model.FaixaEtaria;
 import model.Genero;
 import model.Jogo;
+import view.ConsultaJogos;
 import view.GestaoDepositos;
 import view.GestaoDistribuidoras;
 import view.GestaoFaixasEtarias;
@@ -29,6 +30,7 @@ public class MenuPrincipalController implements ActionListener {
         this.menuPrincipal.getjMenuItemFaixasEtarias().addActionListener(this);
         this.menuPrincipal.getjMenuItemDepositos().addActionListener(this);
         this.menuPrincipal.getjMenuItemJogos().addActionListener(this);
+        this.menuPrincipal.getjMenuItemBuscaJogos().addActionListener(this);
     }
 
     @Override
@@ -72,6 +74,14 @@ public class MenuPrincipalController implements ActionListener {
             
             GestaoJogosController controllerJogo = new GestaoJogosController(viewJogos, model);
             controllerJogo.getGestaoJogos().setVisible(true);
+        }
+        //Busca Jogos
+        else if (e.getSource() == this.menuPrincipal.getjMenuItemBuscaJogos()) {
+            Jogo model = new Jogo();
+            ConsultaJogos viewConsultaJogos = new ConsultaJogos();
+            
+            ConsultaJogosController controllerConsultaJogos = new ConsultaJogosController(viewConsultaJogos, model);
+            controllerConsultaJogos.getConsultaJogos().setVisible(true);
         }
     }
 }

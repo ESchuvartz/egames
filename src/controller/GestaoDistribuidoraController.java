@@ -5,11 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
-import java.io.IOException;
-import java.text.ParseException;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import model.Distribuidora;
 import model.DistribuidoraDAO;
 import model.Utilities;
@@ -24,9 +21,6 @@ public class GestaoDistribuidoraController implements ActionListener, WindowFocu
     
     public GestaoDistribuidoras getGestaoDistribuidoras() {
         return this.gestaoDistribuidoras;
-    }
-
-    public GestaoDistribuidoraController() {
     }
     
     public GestaoDistribuidoraController (GestaoDistribuidoras view, Distribuidora model) {
@@ -92,7 +86,9 @@ public class GestaoDistribuidoraController implements ActionListener, WindowFocu
         if (e.getSource() == this.gestaoDistribuidoras.getjButtonAdicionar()) {
             distribuidora.setNome(this.gestaoDistribuidoras.getjTextFieldNome().getText());
             distribuidora.setFundacao(utilities.converteData(this.gestaoDistribuidoras.getjFormattedTextFieldFundacao().getText()));
-            distribuidora.setImagem(utilities.copiaImagem(this.gestaoDistribuidoras.getjTextFieldImagem().getText(), "/src/images/Distribuidoras/"));
+            if (!this.gestaoDistribuidoras.getjTextFieldImagem().getText().trim().isEmpty()) {
+                distribuidora.setImagem(utilities.copiaImagem(this.gestaoDistribuidoras.getjTextFieldImagem().getText(), "/src/images/Distribuidoras/"));
+            }
 
             //Chama a função para adicionar a distribuidora
             distribuidoraDAO.cadastraDistribuidora(distribuidora);

@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Deposito;
 import model.DepositoDAO;
@@ -19,7 +20,10 @@ import model.Genero;
 import model.GeneroDAO;
 import model.Jogo;
 import model.JogoDAO;
+import model.JogoDep;
+import model.JogoDepDAO;
 import view.ConsultaJogos;
+import view.ConsultaJogosAvaliacoes;
 
 public class ConsultaJogosController implements ActionListener, MouseListener, WindowListener {
     private ConsultaJogos consultaJogos = null;
@@ -33,6 +37,8 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
     private DepositoDAO depositoDAO = null;
     private Jogo jogo = null;
     private JogoDAO jogoDAO = null;
+    private JogoDep jogoDep = null;
+    private JogoDepDAO jogoDepDAO = null;
 
     public ConsultaJogos getConsultaJogos() {
         return consultaJogos;
@@ -50,6 +56,8 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
         this.faixaEtariaDAO = new FaixaEtariaDAO();
         this.deposito = new Deposito();
         this.depositoDAO = new DepositoDAO();
+        this.jogoDep = new JogoDep();
+        this.jogoDepDAO = new JogoDepDAO();
         
         this.consultaJogos.getjButtonIniciarBusca().addActionListener(this);
         this.consultaJogos.getjButtonImagens().addActionListener(this);
@@ -75,8 +83,8 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
     }
     
     //Função para listar os gêneros
-    public void listaGeneros(String nome) {
-        ArrayList<Genero> generos = generoDAO.listaGeneros(nome);
+    public void listaGeneros(String descricao) {
+        ArrayList<Genero> generos = generoDAO.listaGeneros(descricao);
         DefaultComboBoxModel model = (DefaultComboBoxModel) this.consultaJogos.getjComboBoxGenero().getModel();
         
         model.removeAllElements();
@@ -89,8 +97,8 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
     }
     
     //Função para listar as faixas etárias
-    public void listaFaixasEtarias(String nome) {
-        ArrayList<FaixaEtaria> faixasEtarias = faixaEtariaDAO.listaFaixaEtarias(nome);
+    public void listaFaixasEtarias(String descricao) {
+        ArrayList<FaixaEtaria> faixasEtarias = faixaEtariaDAO.listaFaixaEtarias(descricao);
         DefaultComboBoxModel model = (DefaultComboBoxModel) this.consultaJogos.getjComboBoxFaixaEtaria().getModel();
         
         model.removeAllElements();
@@ -103,8 +111,8 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
     }
     
     //Função para listar os depósitos
-    public void listaDepositos(String nome) {
-        ArrayList<Deposito> depositos = depositoDAO.listaDepositos(nome);
+    public void listaDepositos(String descricao) {
+        ArrayList<Deposito> depositos = depositoDAO.listaDepositos(descricao);
         DefaultComboBoxModel model = (DefaultComboBoxModel) this.consultaJogos.getjComboBoxDeposito().getModel();
         
         model.removeAllElements();
@@ -120,6 +128,11 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
     public void actionPerformed(ActionEvent e) {
         //Iniciar busca
         if (e.getSource() == this.consultaJogos.getjButtonIniciarBusca()) {
+            //Ajusta os botões
+            this.consultaJogos.getjButtonImagens().setEnabled(false);
+            this.consultaJogos.getjButtonAvaliar().setEnabled(false);
+            this.consultaJogos.getjButtonVerificarDisponibilidade().setEnabled(false);
+            
             if (this.consultaJogos.getjComboBoxDistribuidora().getSelectedItem().equals("Todas")) {
                 distribuidora.setId(0);
             } else {
@@ -159,8 +172,10 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
                 vlFin = (Double.parseDouble(this.consultaJogos.getjFormattedTextFieldVlFinal().getText().replace(",", ".")));
             }
             
+            String nome = this.consultaJogos.getjTextFieldNome().getText();
+            
             //Chama a função para carregar o array de jogos
-            ArrayList<Jogo> jogos = jogoDAO.listaJogosBusca(distribuidora.getId(), genero.getId(), faixaEtaria.getId(), deposito.getId(), vlIni, vlFin);
+            ArrayList<Jogo> jogos = jogoDAO.listaJogosBusca(distribuidora.getId(), genero.getId(), faixaEtaria.getId(), deposito.getId(), nome, vlIni, vlFin);
             
             DefaultTableModel model = (DefaultTableModel) this.consultaJogos.getjTableListaJogos().getModel();
             
@@ -170,8 +185,9 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
                 distribuidora = distribuidoraDAO.posicionaDistribuidora(jogo1.getIdDistribuidora());
                 genero = generoDAO.posicionaGenero(jogo1.getIdGenero());
                 faixaEtaria = faixaEtariaDAO.posicionaFaixaEtaria(jogo1.getIdFaixaEtaria());
+                deposito = depositoDAO.posicionaDeposito(jogo1.getIdDeposito());
                 
-                model.addRow(new Object[]{jogo1.getId(), jogo1.getNome(), distribuidora.getNome(), genero.getDescricao(), faixaEtaria.getDescricao(), String.valueOf(jogo1.getValor()).replace(".", ",")});
+                model.addRow(new Object[]{jogo1.getId(), jogo1.getNome(), distribuidora.getNome(), genero.getDescricao(), faixaEtaria.getDescricao(), deposito.getDescricao(), String.valueOf(jogo1.getValor()).replace(".", ",")});
             }
             
         }
@@ -181,11 +197,19 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
         }
         //Avaliar
         else if (e.getSource() == this.consultaJogos.getjButtonAvaliar()) {
-            
+            ConsultaJogosAvaliacoes viewConsultaJogosAvaliacoes = new ConsultaJogosAvaliacoes();
+            ConsultaJogosAvaliacoesController controllerAvaliacoesJogos = new ConsultaJogosAvaliacoesController(viewConsultaJogosAvaliacoes, jogo);
+            controllerAvaliacoesJogos.getConsultaJogosAvaliacoes().setVisible(true);
         }
         //Verificar disponibilidade
         else if (e.getSource() == this.consultaJogos.getjButtonVerificarDisponibilidade()) {
-            
+            jogoDep = jogoDepDAO.buscaEstoqueJogo(jogo.getId(), jogo.getIdDeposito());
+            if (jogoDep.getQuantidade() > 0) {
+                if (jogoDep.getQuantidade() == 1) JOptionPane.showMessageDialog(consultaJogos, ("O jogo " + jogo.getNome() + " possui " + jogoDep.getQuantidade() + " quantidade disponível!"));
+                else JOptionPane.showMessageDialog(consultaJogos, ("O jogo " + jogo.getNome() + " possui " + jogoDep.getQuantidade() + " quantidades disponívels!"));
+            } else {
+                JOptionPane.showMessageDialog(consultaJogos, ("O jogo " + jogo.getNome() + " não possui quantidade disponível no momento!"), "Jogo indisponível", JOptionPane.ERROR_MESSAGE);
+            }
         }
         //Sair
         else if (e.getSource() == this.consultaJogos.getjButtonSair()) {
@@ -195,6 +219,12 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
 
     @Override
     public void mouseClicked(MouseEvent me) {
+        jogo = jogoDAO.posicionaJogo((int) this.consultaJogos.getjTableListaJogos().getValueAt(this.consultaJogos.getjTableListaJogos().getSelectedRow(), 0));
+       
+        //Ajusta os botões
+        this.consultaJogos.getjButtonImagens().setEnabled(true);
+        this.consultaJogos.getjButtonAvaliar().setEnabled(true);
+        this.consultaJogos.getjButtonVerificarDisponibilidade().setEnabled(true);
     }
 
     @Override
@@ -251,5 +281,4 @@ public class ConsultaJogosController implements ActionListener, MouseListener, W
     @Override
     public void windowDeactivated(WindowEvent we) {
     }
-    
 }

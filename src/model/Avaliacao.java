@@ -1,16 +1,16 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
-public class Avalicao {
+public class Avaliacao {
     private int id;
-    private Jogo jogo;
+    private int idJogo;
     private Date data;
     private int nota;
     private String avaliador;
     private String observacao;
 
-    public Avalicao() {
+    public Avaliacao() {
     }
 
     public String getAvaliador() {
@@ -37,12 +37,12 @@ public class Avalicao {
         this.id = id;
     }
 
-    public Jogo getJogo() {
-        return jogo;
+    public int getIdJogo() {
+        return idJogo;
     }
 
-    public void setJogo(Jogo jogo) {
-        this.jogo = jogo;
+    public void setIdJogo(int idJogo) {
+        this.idJogo = idJogo;
     }
 
     public int getNota() {

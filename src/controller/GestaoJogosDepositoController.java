@@ -2,13 +2,15 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import model.Deposito;
 import model.Jogo;
 import model.JogoDep;
 import model.JogoDepDAO;
 import view.GestaoJogosDeposito;
 
-public class GestaoJogosDepositoController implements ActionListener {
+public class GestaoJogosDepositoController implements ActionListener, WindowListener {
     private GestaoJogosDeposito gestaoJogosDeposito = null;
     private Jogo jogo = null;
     private Deposito deposito = null;
@@ -28,6 +30,7 @@ public class GestaoJogosDepositoController implements ActionListener {
         
         this.gestaoJogosDeposito.getjButtonMovimentar().addActionListener(this);
         this.gestaoJogosDeposito.getjButtonSair().addActionListener(this);
+        this.gestaoJogosDeposito.addWindowListener(this);
     }
 
     @Override
@@ -45,5 +48,40 @@ public class GestaoJogosDepositoController implements ActionListener {
         else if (e.getSource() == this.gestaoJogosDeposito.getjButtonSair()) {
             this.gestaoJogosDeposito.dispose();
         }
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        if (this.gestaoJogosDeposito.getjTextFieldIdJogo().getText().isEmpty()) {
+            this.gestaoJogosDeposito.getjTextFieldIdJogo().setText(String.valueOf(jogo.getId()));
+            this.gestaoJogosDeposito.getjTextFieldNomeJogo().setText(jogo.getNome());
+            this.gestaoJogosDeposito.getjTextFieldIdDeposito().setText(String.valueOf(deposito.getId()));
+            this.gestaoJogosDeposito.getjTextFieldDescDeposito().setText(deposito.getDescricao());
+            this.gestaoJogosDeposito.getjSpinnerQtdeAtual().setValue((int) jogoDep.getQuantidade());
+        }
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
     }
 }
