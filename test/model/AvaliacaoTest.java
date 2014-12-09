@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
 import java.sql.Date;
@@ -13,11 +7,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
-/**
- *
- * @author prog02
- */
 public class AvaliacaoTest {
     
     public AvaliacaoTest() {
@@ -46,7 +35,7 @@ public class AvaliacaoTest {
     public void testGetAvaliador() {
         System.out.println("getAvaliador");
         Avaliacao instance = new Avaliacao();
-        String expResult = null;
+        String expResult = "";
         String result = instance.getAvaliador();
         assertEquals(expResult, result);
     }
@@ -161,7 +150,7 @@ public class AvaliacaoTest {
     public void testGetObservacao() {
         System.out.println("getObservacao");
         Avaliacao instance = new Avaliacao();
-        String expResult = null;
+        String expResult = "";
         String result = instance.getObservacao();
         assertEquals(expResult, result);
     }
@@ -175,6 +164,18 @@ public class AvaliacaoTest {
         String observacao = "";
         Avaliacao instance = new Avaliacao();
         instance.setObservacao(observacao);
+    }
+
+    /**
+     * Test of validaCampos method, of class Avaliacao.
+     */
+    @Test
+    public void testValidaCampos() {
+        System.out.println("validaCampos");
+        Avaliacao instance = new Avaliacao();
+        boolean expResult = false;
+        boolean result = instance.validaCampos();
+        assertEquals(expResult, result);
     }
     
 }

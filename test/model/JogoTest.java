@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
 import org.junit.After;
@@ -13,10 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author prog02
- */
 public class JogoTest {
     
     public JogoTest() {
@@ -48,7 +38,6 @@ public class JogoTest {
         double expResult = 0.0;
         double result = instance.getClassificacao();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -60,7 +49,6 @@ public class JogoTest {
         double classificacao = 0.0;
         Jogo instance = new Jogo();
         instance.setClassificacao(classificacao);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -70,10 +58,9 @@ public class JogoTest {
     public void testGetNome() {
         System.out.println("getNome");
         Jogo instance = new Jogo();
-        String expResult = null;
+        String expResult = "";
         String result = instance.getNome();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -85,7 +72,6 @@ public class JogoTest {
         String nome = "";
         Jogo instance = new Jogo();
         instance.setNome(nome);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -98,7 +84,6 @@ public class JogoTest {
         int expResult = 0;
         int result = instance.getId();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -110,7 +95,6 @@ public class JogoTest {
         int id = 0;
         Jogo instance = new Jogo();
         instance.setId(id);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -120,10 +104,9 @@ public class JogoTest {
     public void testGetReview() {
         System.out.println("getReview");
         Jogo instance = new Jogo();
-        String expResult = null;
+        String expResult = "";
         String result = instance.getReview();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -135,7 +118,6 @@ public class JogoTest {
         String review = "";
         Jogo instance = new Jogo();
         instance.setReview(review);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -148,7 +130,6 @@ public class JogoTest {
         double expResult = 0.0;
         double result = instance.getValor();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -160,7 +141,6 @@ public class JogoTest {
         double valor = 0.0;
         Jogo instance = new Jogo();
         instance.setValor(valor);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -173,7 +153,6 @@ public class JogoTest {
         int expResult = 0;
         int result = instance.getIdDistribuidora();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -185,7 +164,6 @@ public class JogoTest {
         int idDistribuidora = 0;
         Jogo instance = new Jogo();
         instance.setIdDistribuidora(idDistribuidora);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -198,7 +176,6 @@ public class JogoTest {
         int expResult = 0;
         int result = instance.getIdGenero();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -210,7 +187,6 @@ public class JogoTest {
         int idGenero = 0;
         Jogo instance = new Jogo();
         instance.setIdGenero(idGenero);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -223,7 +199,6 @@ public class JogoTest {
         int expResult = 0;
         int result = instance.getIdFaixaEtaria();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -235,7 +210,6 @@ public class JogoTest {
         int idFaixaEtaria = 0;
         Jogo instance = new Jogo();
         instance.setIdFaixaEtaria(idFaixaEtaria);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**

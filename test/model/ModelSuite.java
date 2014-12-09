@@ -15,10 +15,10 @@ import org.junit.runners.Suite;
 
 /**
  *
- * @author prog02
+ * @author Eduardo
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({FaixaEtariaTest.class, DistribuidoraTest.class, JogoImagemTest.class, AvaliacaoTest.class, DepositoTest.class, GeneroTest.class, JogoTest.class, JogoDepTest.class})
+@Suite.SuiteClasses({model.AvaliacaoTest.class, model.DistribuidoraTest.class, model.JogoImagemTest.class, model.DepositoTest.class, model.GeneroTest.class, model.UtilitiesTest.class, model.JogoTest.class, model.FaixaEtariaTest.class, model.JogoDepTest.class})
 public class ModelSuite {
 
     @BeforeClass

@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Date;
+import javax.swing.JOptionPane;
 
 public class Avaliacao {
     private int id;
@@ -59,5 +60,14 @@ public class Avaliacao {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+    
+    public boolean validaCampos() {
+        if (avaliador.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o nome do avaliadro", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
     }
 }

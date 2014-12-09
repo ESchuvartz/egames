@@ -59,14 +59,16 @@ public class Utilities {
     
     //Função utilizada para converter uma sting para um SQL Date
     public Date converteData(String sData) {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");  
-        java.util.Date dataJava;  
-        try {
-            dataJava = df.parse(sData);
-            java.sql.Date dataSql = new Date(dataJava.getTime());  
-            return dataSql;
-        } catch (ParseException ex) {
+        if (!sData.isEmpty()) {
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");  
+            java.util.Date dataJava;  
+            try {
+                dataJava = df.parse(sData);
+                java.sql.Date dataSql = new Date(dataJava.getTime());  
+                return dataSql;
+            } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro ao converter data de fundação", JOptionPane.ERROR_MESSAGE);
+            }
         }
         
         return null;
@@ -74,42 +76,59 @@ public class Utilities {
     
     //Função para passar a data de "YYYY-MM-DD" para "DD-MM-YYYY"
     public String ajustaData (Date dData) {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");  
-        String sData = df.format(dData);
-        return sData;
+        if (dData != null) {
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");  
+            String sData = df.format(dData);
+            return sData;
+        }
+        
+        return null;
     }
     
     //Função utilizada para criar pasta
     public File criaPasta (String CaminhoNome) {
-        //Caminho + Nome da pasta. Exemplo: src/images/Jogos/
-        File diretorio = new File(System.getProperty("user.dir") + "/" + CaminhoNome);
+        if (!CaminhoNome.isEmpty()) {
+            //Caminho + Nome da pasta. Exemplo: src/images/Jogos/
+            File diretorio = new File(System.getProperty("user.dir") + "/" + CaminhoNome);
         
-        //Cria todos os diretórios e subdiretórios
-        diretorio.mkdirs();
+            //Cria todos os diretórios e subdiretórios
+            diretorio.mkdirs();
         
-        return diretorio;
+            return diretorio;
+        }
+        
+        return null;
     }
     
     //Função utilizada para centralizar um JFrame
     public void centralizarFrame (JFrame obj) {
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        obj.setLocation(dimension.width/2-obj.getSize().width/2, dimension.height/2-obj.getSize().height/2);
+        if (obj != null) {
+            Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+            obj.setLocation(dimension.width/2-obj.getSize().width/2, dimension.height/2-obj.getSize().height/2);
+        }
     }
     
     //Função utilizada para centralizar um JDialog
     public void centralizarDialog (JDialog obj) {
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        obj.setLocation(dimension.width/2-obj.getSize().width/2, dimension.height/2-obj.getSize().height/2);
+        if (obj != null) {
+            Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+            obj.setLocation(dimension.width/2-obj.getSize().width/2, dimension.height/2-obj.getSize().height/2);
+        }
     }
     
     //Função utilizada para incluir um ícone na tela
     public Image adicionarIcone (String sIcone) {
-        return (Toolkit.getDefaultToolkit().getImage(System.getProperty("user.dir") + sIcone));
+        if (!sIcone.isEmpty()) return (Toolkit.getDefaultToolkit().getImage(System.getProperty("user.dir") + sIcone));
+        else return null;
     }
     
     //Função para ajustar as casas decimais
     public String ajustaDecimais (Double valor) {
-        DecimalFormat df = new DecimalFormat("0.##");
-        return df.format(valor);
+        if (valor != null) {
+            DecimalFormat df = new DecimalFormat("0.##");
+            return df.format(valor);
+        }
+        
+        return null;
     }
 }

@@ -75,25 +75,27 @@ public class ConsultaJogosAvaliacoesController implements ActionListener, MouseL
             avaliacao.setIdJogo(jogo.getId());
             
             //Chama a função para cadastrar a avaliação
-            avaliacaoDAO.cadastraAvaliacao(avaliacao);
+            if (avaliacao.validaCampos()) {
+                avaliacaoDAO.cadastraAvaliacao(avaliacao);
             
-            //Chama a função para retonrar a quantidade de avaliações e a soma das notas para o jogo
-            double nota = avaliacaoDAO.notaAvaliacoes(jogo.getId());
-            double qtde = avaliacaoDAO.numeroAvaliacoes(jogo.getId());
-            
-            double classificacao = nota / qtde;
-            
-            //Chama a função para ajustar a classificação do jogo
-            jogoDAO.ajustaClassificacaoJogo(jogo.getId(), classificacao);
-            
-            //Ajusta a classificação na tela
-            this.consultaJogosAvaliacoes.getjTextFieldNotaGeral().setText(utilities.ajustaDecimais(classificacao));
-            
-            //Chama a função para limpar a view
-            limpaView();
-            
-            //Chama a função para listar as avaliações
-            listaAvaliacoes(jogo.getId());
+                //Chama a função para retonrar a quantidade de avaliações e a soma das notas para o jogo
+                double nota = avaliacaoDAO.notaAvaliacoes(jogo.getId());
+                double qtde = avaliacaoDAO.numeroAvaliacoes(jogo.getId());
+
+                double classificacao = nota / qtde;
+
+                //Chama a função para ajustar a classificação do jogo
+                jogoDAO.ajustaClassificacaoJogo(jogo.getId(), classificacao);
+
+                //Ajusta a classificação na tela
+                this.consultaJogosAvaliacoes.getjTextFieldNotaGeral().setText(utilities.ajustaDecimais(classificacao));
+
+                //Chama a função para limpar a view
+                limpaView();
+
+                //Chama a função para listar as avaliações
+                listaAvaliacoes(jogo.getId());
+            }
         }
         //Limpar
         else if (e.getSource() == this.consultaJogosAvaliacoes.getjButtonLimpar()) {

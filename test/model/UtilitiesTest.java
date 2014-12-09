@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
 import java.awt.Image;
@@ -18,10 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author prog02
- */
 public class UtilitiesTest {
     
     public UtilitiesTest() {
@@ -52,7 +42,7 @@ public class UtilitiesTest {
         String sImagem = "";
         String sDiretorio = "";
         Utilities instance = new Utilities();
-        String expResult = "";
+        String expResult = null;
         String result = instance.copiaImagem(sImagem, sDiretorio);
         assertEquals(expResult, result);
     }
@@ -78,7 +68,7 @@ public class UtilitiesTest {
         System.out.println("ajustaData");
         Date dData = null;
         Utilities instance = new Utilities();
-        String expResult = "";
+        String expResult = null;
         String result = instance.ajustaData(dData);
         assertEquals(expResult, result);
     }
@@ -139,9 +129,50 @@ public class UtilitiesTest {
         System.out.println("ajustaDecimais");
         Double valor = null;
         Utilities instance = new Utilities();
-        String expResult = "";
+        String expResult = null;
         String result = instance.ajustaDecimais(valor);
         assertEquals(expResult, result);
     }
     
+    /**
+     * Testa se as casas decimais retornam corretamente
+     */
+    @Test
+    public void testeAjustaDecimais() {
+        System.out.println("Teste para verificar o retorno de decimais.");
+        
+        //Valor da divisão = 3,333333333
+        double valor = 10.00 / 3.00;
+        Utilities instance = new Utilities();
+        
+        //O resultado esperado deve ser 3,33
+        String expResult = "3,33";
+        
+        //Chama a função para ajustar os decimais da variável que recebeu a divisão
+        String result = instance.ajustaDecimais(valor);
+        
+        //Verifica o resultado esperado com o resultado obtido
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Verifica se o método que converte uma SQL Date para String está correto
+     */
+    @Test
+    public void testaDataString() {
+        System.out.println("Testa a transformação de um sql date para string");
+        Utilities instance = new Utilities();
+        
+        //Criação de um SQL Date de "10/12/2014 o método transformará para 2014-12-10
+        Date dData = instance.converteData("10/12/2014");
+        
+        //O resultado esperado será 10/12/2014
+        String expResult = "10/12/2014";
+        
+        //Chama a função para converter o sql date para string
+        String result = instance.ajustaData(dData);
+        
+        //Verifica o resultado esperado com o resultado obtido
+        assertEquals(expResult, result);
+    }
 }

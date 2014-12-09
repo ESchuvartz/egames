@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
 import java.sql.Date;
@@ -14,10 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author prog02
- */
 public class DistribuidoraTest {
     
     public DistribuidoraTest() {
@@ -92,7 +82,7 @@ public class DistribuidoraTest {
     public void testGetImagem() {
         System.out.println("getImagem");
         Distribuidora instance = new Distribuidora();
-        String expResult = null;
+        String expResult = "";
         String result = instance.getImagem();
         assertEquals(expResult, result);
     }
@@ -115,7 +105,7 @@ public class DistribuidoraTest {
     public void testGetNome() {
         System.out.println("getNome");
         Distribuidora instance = new Distribuidora();
-        String expResult = null;
+        String expResult = "";
         String result = instance.getNome();
         assertEquals(expResult, result);
     }
@@ -129,15 +119,5 @@ public class DistribuidoraTest {
         String nome = "";
         Distribuidora instance = new Distribuidora();
         instance.setNome(nome);
-    }
-    
-    //Função para testar o tamanho da data, incluíndo as "/" da formatação
-    @Test
-    public void tamanhoData() {
-        System.out.println("Testa o tamanho da data");
-        String sData = "21/12/2014";
-        int result = sData.length();
-        int expResult = 10;
-        assertEquals(expResult, result);
     }
 }

@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
 import org.junit.After;
@@ -13,10 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author prog02
- */
 public class FaixaEtariaTest {
     
     public FaixaEtariaTest() {
@@ -45,7 +35,7 @@ public class FaixaEtariaTest {
     public void testGetDescricao() {
         System.out.println("getDescricao");
         FaixaEtaria instance = new FaixaEtaria();
-        String expResult = null;
+        String expResult = "";
         String result = instance.getDescricao();
         assertEquals(expResult, result);
     }
@@ -83,5 +73,4 @@ public class FaixaEtariaTest {
         FaixaEtaria instance = new FaixaEtaria();
         instance.setId(id);
     }
-    
 }
