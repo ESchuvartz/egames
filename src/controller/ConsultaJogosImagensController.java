@@ -62,6 +62,8 @@ public class ConsultaJogosImagensController implements ActionListener, WindowLis
     public void actionPerformed(ActionEvent e) {
         //Anterior
         if (e.getSource() == this.consultaJogosImagens.getjButtonAnterior()) {
+            this.consultaJogosImagens.getjLabelExibindoImagem().setText("Exibindo imagem: " + iAtual + " de " + iUltima);
+            
             iAtual = iAtual - 1;
             
             if (iAtual == 0) this.consultaJogosImagens.getjButtonAnterior().setEnabled(false);
@@ -75,6 +77,8 @@ public class ConsultaJogosImagensController implements ActionListener, WindowLis
             
             if (iAtual + 1 == iUltima) this.consultaJogosImagens.getjButtonProxima().setEnabled(false);
             this.consultaJogosImagens.getjButtonAnterior().setEnabled(true);
+            
+            this.consultaJogosImagens.getjLabelExibindoImagem().setText("Exibindo imagem: " + (iAtual+1) + " de " + iUltima);
             
             exibeImagem(System.getProperty("user.dir") + jogoimagens.get(iAtual).getImagem());
         }
@@ -95,6 +99,8 @@ public class ConsultaJogosImagensController implements ActionListener, WindowLis
             exibeImagem(System.getProperty("user.dir") + jogoimagens.get(0).getImagem());
             
             iUltima = jogoimagens.size();
+            
+            this.consultaJogosImagens.getjLabelExibindoImagem().setText("Exibindo imagem: " + (iAtual+1) + " de " + iUltima);
             
             if (iAtual + 1 == iUltima) this.consultaJogosImagens.getjButtonProxima().setEnabled(false);
             this.consultaJogosImagens.getjButtonAnterior().setEnabled(false);

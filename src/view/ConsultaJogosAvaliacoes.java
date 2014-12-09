@@ -219,6 +219,7 @@ public class ConsultaJogosAvaliacoes extends javax.swing.JFrame {
         jComboBoxNota.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
 
         jTextAreaObservacao.setColumns(20);
+        jTextAreaObservacao.setLineWrap(true);
         jTextAreaObservacao.setRows(5);
         jScrollPane2.setViewportView(jTextAreaObservacao);
 
