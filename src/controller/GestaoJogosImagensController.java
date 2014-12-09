@@ -104,25 +104,28 @@ public class GestaoJogosImagensController implements ActionListener, WindowListe
 
             //Chama a função para copiar a imagem para a pasta criada
             jogoImagem.setImagem(utilities.copiaImagem(this.gestaoJogosImagens.getjTextFieldImagem().getText(), "/src/images/Jogos/" + jogoImagem.getIdJogo() + "/"));
+            
+            if (jogoImagem.validaCampos()) {
+                //Chama a função para cadastrar a imagem do jogo
+                jogoImagemDAO.cadastraJogoImagem(jogoImagem);
 
-            //Chama a função para cadastrar a imagem do jogo
-            jogoImagemDAO.cadastraJogoImagem(jogoImagem);
-            
-            //Chama a função para limpar a view
-            limpaView();
-            
-            //Chama a função para atualizar a table de imagens
-            listaJogoImagens(jogoImagem.getIdJogo());
+                //Chama a função para limpar a view
+                limpaView();
+
+                //Chama a função para atualizar a table de imagens
+                listaJogoImagens(jogoImagem.getIdJogo());
+            }
         }
         //Excluir
         else if (e.getSource() == this.gestaoJogosImagens.getjButtonExcluir()) {
             //Chama o método para excluir a imagem
             jogoImagemDAO.excluiJogoImagemSeq(jogoImagem);
-            
+
             //Chama o método para listar as imagens novamente
             listaJogoImagens(jogoImagem.getIdJogo());
-            
+
             exibeImagem("");
+            this.gestaoJogosImagens.getjButtonExcluir().setEnabled(false);
         }
         //Sair
         else if (e.getSource() == this.gestaoJogosImagens.getjButtonSair()) {
@@ -169,6 +172,7 @@ public class GestaoJogosImagensController implements ActionListener, WindowListe
         jogoImagem.setIdJogo(Integer.parseInt(this.gestaoJogosImagens.getjTextFieldId().getText()));
         jogoImagem.setImagem((String) this.gestaoJogosImagens.getjTableImagens().getValueAt(this.gestaoJogosImagens.getjTableImagens().getSelectedRow(), 2));
         exibeImagem(System.getProperty("user.dir") + jogoImagem.getImagem());
+        this.gestaoJogosImagens.getjButtonExcluir().setEnabled(true);
     }
 
     @Override

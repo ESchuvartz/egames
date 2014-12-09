@@ -151,6 +151,7 @@ public class GestaoJogosImagens extends javax.swing.JFrame {
         jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Excluir.png"))); // NOI18N
         jButtonExcluir.setText("Excluir");
         jButtonExcluir.setToolTipText("");
+        jButtonExcluir.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

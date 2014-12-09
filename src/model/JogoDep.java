@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.JOptionPane;
+
 public class JogoDep {
     private int id;
     private int idJogo;
@@ -39,5 +41,20 @@ public class JogoDep {
 
     public void setIdDeposito(int idDeposito) {
         this.idDeposito = idDeposito;
-    } 
+    }
+    
+    public boolean validaCampos() {
+        if (idJogo == 0) {
+            JOptionPane.showMessageDialog(null, "Jogo inválido!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (idDeposito == 0) {
+            JOptionPane.showMessageDialog(null, "Depósito inválido", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (quantidade < 0) {
+            JOptionPane.showMessageDialog(null, "A quantidade deve ser maior ou igual a zero!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
+    }
 }

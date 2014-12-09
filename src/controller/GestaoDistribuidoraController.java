@@ -93,12 +93,14 @@ public class GestaoDistribuidoraController implements ActionListener, WindowFocu
             if (!this.gestaoDistribuidoras.getjTextFieldImagem().getText().trim().isEmpty()) {
                 distribuidora.setImagem(utilities.copiaImagem(this.gestaoDistribuidoras.getjTextFieldImagem().getText(), "/src/images/Distribuidoras/"));
             }
-
-            //Chama a função para adicionar a distribuidora
-            distribuidoraDAO.cadastraDistribuidora(distribuidora);
             
-            //Chama a função para limpar a view
-            limpaView();
+            if (distribuidora.validaCampos()) {
+                //Chama a função para adicionar a distribuidora
+                distribuidoraDAO.cadastraDistribuidora(distribuidora);
+
+                //Chama a função para limpar a view
+                limpaView();
+            }
         }
         //Editar
         else if (e.getSource() == this.gestaoDistribuidoras.getjButtonEditar()) {
@@ -112,11 +114,13 @@ public class GestaoDistribuidoraController implements ActionListener, WindowFocu
                 distribuidora.setImagem(this.gestaoDistribuidoras.getjTextFieldImagem().getText());
             }
             
-            //Chama a função parar editar a distribuidora
-            distribuidoraDAO.editarDistribuidora(distribuidora);
-            
-            //Chama a função para limpar a view
-            limpaView();
+            if(distribuidora.validaCampos()) {
+                //Chama a função parar editar a distribuidora
+                distribuidoraDAO.editarDistribuidora(distribuidora);
+
+                //Chama a função para limpar a view
+                limpaView();
+            }
         }
         //Excluir
         else if (e.getSource() == this.getGestaoDistribuidoras().getjButtonExcluir()) {

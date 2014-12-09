@@ -215,6 +215,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Excluir"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
   </SubComponents>

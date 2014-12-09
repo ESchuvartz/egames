@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.JOptionPane;
+
 public class Deposito {
     private int id;
     private String descricao;
@@ -21,5 +23,14 @@ public class Deposito {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public boolean validaCampos() {
+        if (descricao == null || descricao.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Descrição do depósito inválida!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
     }
 }

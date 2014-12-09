@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Date;
+import javax.swing.JOptionPane;
 
 public class Distribuidora {
     private int id;
@@ -41,5 +42,17 @@ public class Distribuidora {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    public boolean validaCampos() {
+        if (nome == null || nome.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nome da distribuidora inválido!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (fundacao == null) {
+            JOptionPane.showMessageDialog(null, "Data de fundação da distribuidora inválida!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
     }
 }

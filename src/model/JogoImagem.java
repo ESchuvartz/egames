@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.JOptionPane;
+
 public class JogoImagem {
     private int sequencia;
     private int idJogo;
@@ -30,5 +32,17 @@ public class JogoImagem {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+    
+    public boolean validaCampos() {
+        if (idJogo == 0) {
+            JOptionPane.showMessageDialog(null, "Jogo inválido!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (imagem == null || imagem.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Imagem inválida!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
     }
 }

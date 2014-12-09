@@ -35,7 +35,7 @@ public class DepositoTest {
     public void testGetDescricao() {
         System.out.println("getDescricao");
         Deposito instance = new Deposito();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getDescricao();
         assertEquals(expResult, result);
     }

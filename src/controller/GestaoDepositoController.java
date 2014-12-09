@@ -58,22 +58,27 @@ public class GestaoDepositoController implements ActionListener, WindowFocusList
         if (e.getSource() == this.gestaoDeposito.getjButtonAdicionar()) {
             deposito.setDescricao(this.gestaoDeposito.getjTextFieldDescricao().getText());
             
-            //Chama a função para cadastrar o depósito
-            depositoDAO.cadastraDeposito(deposito);
             
-            //Chama a função para limpar a view
-            limpaView();
+            if (deposito.validaCampos()) {
+                //Chama a função para cadastrar o depósito
+                depositoDAO.cadastraDeposito(deposito);
+
+                //Chama a função para limpar a view
+                limpaView();
+            }
         }
         //Editar
         else if (e.getSource() == this.gestaoDeposito.getjButtonEditar()) {
             deposito.setId(Integer.parseInt(this.gestaoDeposito.getjTextFieldId().getText()));
             deposito.setDescricao(this.gestaoDeposito.getjTextFieldDescricao().getText());
             
-            //Chama a função para editar o depósito
-            depositoDAO.editaDeposito(deposito);
-            
-            //Chama a função para limpar a view
-            limpaView();
+            if (deposito.validaCampos()) {
+                //Chama a função para editar o depósito
+                depositoDAO.editaDeposito(deposito);
+
+                //Chama a função para limpar a view
+                limpaView();
+            }
         }
         //Excluir
         else if (e.getSource() == this.gestaoDeposito.getjButtonExcluir()) {

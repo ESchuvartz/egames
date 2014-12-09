@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.JOptionPane;
+
 public class Jogo {
     private int id;
     private String nome;
@@ -84,5 +86,29 @@ public class Jogo {
 
     public void setIdDeposito(int idDeposito) {
         this.idDeposito = idDeposito;
+    }
+    
+    public boolean validaCampos() {
+        if (nome == null || nome.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nome do jogo inválido!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (idDistribuidora == 0) {
+            JOptionPane.showMessageDialog(null, "Distribuidora do jogo inválida!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (idGenero == 0) {
+            JOptionPane.showMessageDialog(null, "Gênero do jogo inválido!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (idFaixaEtaria == 0) {
+            JOptionPane.showMessageDialog(null, "Faixa etária do jogo inválida!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (idDeposito == 0) {
+            JOptionPane.showMessageDialog(null, "Depósito do jogo inválido!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (valor <= 0) {
+            JOptionPane.showMessageDialog(null, "Valor do jogo inválido!", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
     }
 }

@@ -63,7 +63,7 @@ public class Avaliacao {
     }
     
     public boolean validaCampos() {
-        if (avaliador.isEmpty()) {
+        if (avaliador == null || avaliador.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o nome do avaliador", "Erro ao validar campos", JOptionPane.ERROR_MESSAGE);
             return false;
         } else if (data == null) {

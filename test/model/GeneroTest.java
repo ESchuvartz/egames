@@ -35,7 +35,7 @@ public class GeneroTest {
     public void testGetDescricao() {
         System.out.println("getDescricao");
         Genero instance = new Genero();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getDescricao();
         assertEquals(expResult, result);
     }

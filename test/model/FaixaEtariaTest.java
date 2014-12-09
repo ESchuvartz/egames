@@ -35,7 +35,7 @@ public class FaixaEtariaTest {
     public void testGetDescricao() {
         System.out.println("getDescricao");
         FaixaEtaria instance = new FaixaEtaria();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getDescricao();
         assertEquals(expResult, result);
     }

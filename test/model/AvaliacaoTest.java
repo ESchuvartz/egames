@@ -35,7 +35,7 @@ public class AvaliacaoTest {
     public void testGetAvaliador() {
         System.out.println("getAvaliador");
         Avaliacao instance = new Avaliacao();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getAvaliador();
         assertEquals(expResult, result);
     }
@@ -150,7 +150,7 @@ public class AvaliacaoTest {
     public void testGetObservacao() {
         System.out.println("getObservacao");
         Avaliacao instance = new Avaliacao();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getObservacao();
         assertEquals(expResult, result);
     }
@@ -165,17 +165,4 @@ public class AvaliacaoTest {
         Avaliacao instance = new Avaliacao();
         instance.setObservacao(observacao);
     }
-
-    /**
-     * Test of validaCampos method, of class Avaliacao.
-     */
-    @Test
-    public void testValidaCampos() {
-        System.out.println("validaCampos");
-        Avaliacao instance = new Avaliacao();
-        boolean expResult = false;
-        boolean result = instance.validaCampos();
-        assertEquals(expResult, result);
-    }
-    
 }

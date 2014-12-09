@@ -82,7 +82,7 @@ public class DistribuidoraTest {
     public void testGetImagem() {
         System.out.println("getImagem");
         Distribuidora instance = new Distribuidora();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getImagem();
         assertEquals(expResult, result);
     }
@@ -105,7 +105,7 @@ public class DistribuidoraTest {
     public void testGetNome() {
         System.out.println("getNome");
         Distribuidora instance = new Distribuidora();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getNome();
         assertEquals(expResult, result);
     }

@@ -58,22 +58,26 @@ public class GestaoFaixaEtariaController implements ActionListener, WindowFocusL
         if (e.getSource() == this.gestaoFaixaEtaria.getjButtonAdicionar()) {
             faixaEtaria.setDescricao(this.gestaoFaixaEtaria.getjTextFieldDescricao().getText());
             
-            //Chama a função para cadastrar a faixa etária
-            faixaEtariaDAO.cadastraFaixaEtaria(faixaEtaria);
-            
-            //Chama a função para limpar a view
-            limpaView();
+            if (faixaEtaria.validaCampos()) {
+                //Chama a função para cadastrar a faixa etária
+                faixaEtariaDAO.cadastraFaixaEtaria(faixaEtaria);
+
+                //Chama a função para limpar a view
+                limpaView();
+            }
         }
         //Editar
         else if (e.getSource() == this.gestaoFaixaEtaria.getjButtonEditar()) {
             faixaEtaria.setId(Integer.parseInt(this.gestaoFaixaEtaria.getjTextFieldId().getText()));
             faixaEtaria.setDescricao(this.gestaoFaixaEtaria.getjTextFieldDescricao().getText());
             
-            //Chama a função para editar a faixa etária
-            faixaEtariaDAO.editaFaixaEtaria(faixaEtaria);
-            
-            //Chama a função para limpar a view
-            limpaView();
+            if (faixaEtaria.validaCampos()) {
+                //Chama a função para editar a faixa etária
+                faixaEtariaDAO.editaFaixaEtaria(faixaEtaria);
+
+                //Chama a função para limpar a view
+                limpaView();
+            }
         }
         //Excluir
         else if (e.getSource() == this.gestaoFaixaEtaria.getjButtonExcluir()) {

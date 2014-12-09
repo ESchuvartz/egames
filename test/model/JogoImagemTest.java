@@ -81,7 +81,7 @@ public class JogoImagemTest {
     public void testGetImagem() {
         System.out.println("getImagem");
         JogoImagem instance = new JogoImagem();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getImagem();
         assertEquals(expResult, result);
     }

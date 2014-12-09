@@ -58,22 +58,26 @@ public class GestaoGeneroController implements ActionListener, WindowFocusListen
         if (e.getSource() == this.gestaoGenero.getjButtonAdicionar()) {
             genero.setDescricao(this.gestaoGenero.getjTextFieldDescricao().getText());
             
-            //Chama a função para cadastrar o gênero
-            generoDAO.cadastraGenero(genero);
-            
-            //Chama a função para limpar a view
-            limpaView();
+            if (genero.validaCampos()) {
+                //Chama a função para cadastrar o gênero
+                generoDAO.cadastraGenero(genero);
+
+                //Chama a função para limpar a view
+                limpaView();
+            }
         }
         //Editar
         else if (e.getSource() == this.gestaoGenero.getjButtonEditar()) {
             genero.setId(Integer.parseInt(this.gestaoGenero.getjTextFieldId().getText()));
             genero.setDescricao(this.gestaoGenero.getjTextFieldDescricao().getText());
             
-            //Chama a função para editar o gênero
-            generoDAO.editaGenero(genero);
-            
-            //Chama a função para limpar a view
-            limpaView();
+            if (genero.validaCampos()) {
+                //Chama a função para editar o gênero
+                generoDAO.editaGenero(genero);
+
+                //Chama a função para limpar a view
+                limpaView();
+            }
         }
         //Excluir
         else if (e.getSource() == this.gestaoGenero.getjButtonExcluir()) {

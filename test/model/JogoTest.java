@@ -58,7 +58,7 @@ public class JogoTest {
     public void testGetNome() {
         System.out.println("getNome");
         Jogo instance = new Jogo();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getNome();
         assertEquals(expResult, result);
     }
@@ -104,7 +104,7 @@ public class JogoTest {
     public void testGetReview() {
         System.out.println("getReview");
         Jogo instance = new Jogo();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getReview();
         assertEquals(expResult, result);
     }

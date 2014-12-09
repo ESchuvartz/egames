@@ -41,8 +41,10 @@ public class GestaoJogosDepositoController implements ActionListener, WindowList
             jogoDep.setIdDeposito(deposito.getId());
             jogoDep.setQuantidade((int) this.gestaoJogosDeposito.getjSpinnerQtdeAtual().getValue());
             
-            //Chama a função para realizar a movimentação do estoque
-            jogoDepDAO.movimentaJogoDeposito(jogoDep);
+            if (jogoDep.validaCampos()) {
+                //Chama a função para realizar a movimentação do estoque
+                jogoDepDAO.movimentaJogoDeposito(jogoDep);
+            }
         }
         //Sair
         else if (e.getSource() == this.gestaoJogosDeposito.getjButtonSair()) {

@@ -95,6 +95,7 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
         listaGeneros("");
         listaFaixasEtarias("");
         listaDepositos("");
+        this.gestaoJogos.getjComboBoxDeposito().setEnabled(true);
         
         //Ajusta o stauts dos botões
         this.gestaoJogos.getjButtonCadastrar().setEnabled(true);
@@ -172,6 +173,7 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
         this.gestaoJogos.getjFormattedTextFieldValor().setText("" + String.valueOf(jogo.getValor()).replace(".", ","));
         this.gestaoJogos.getjTextFieldClassificacao().setText(utilities.ajustaDecimais(jogo.getClassificacao()));
         this.gestaoJogos.getjTextAreaReview().setText(jogo.getReview());
+        this.gestaoJogos.getjComboBoxDeposito().setEnabled(false);
     }
     
     @Override
@@ -195,15 +197,21 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
             jogo.setIdGenero(genero.getId());
             jogo.setIdFaixaEtaria(faixaEtaria.getId());
             jogo.setIdDeposito(deposito.getId());
-            jogo.setValor(Double.parseDouble(this.gestaoJogos.getjFormattedTextFieldValor().getText().replace(",", ".")));
+            if (!this.gestaoJogos.getjFormattedTextFieldValor().getText().isEmpty()) {
+                jogo.setValor(Double.parseDouble(this.gestaoJogos.getjFormattedTextFieldValor().getText().replace(",", ".")));
+            } else {
+                jogo.setValor(0.00);
+            }
             jogo.setClassificacao(0);
             jogo.setReview(this.gestaoJogos.getjTextAreaReview().getText());
             
-            //Chama a função para cadastrar o jogo
-            jogoDAO.cadastraJogo(jogo);
-            
-            //Chama a função para limpar a view
-            limpaView();
+            if (jogo.validaCampos()) {
+                //Chama a função para cadastrar o jogo
+                jogoDAO.cadastraJogo(jogo);
+
+                //Chama a função para limpar a view
+                limpaView();                
+            }
         }
         //Editar
         else if (e.getSource() == this.getGestaoJogos().getjButtonEditar()) {
@@ -225,15 +233,21 @@ public class GestaoJogosController implements ActionListener, WindowListener, Wi
             jogo.setIdGenero(genero.getId());
             jogo.setIdFaixaEtaria(faixaEtaria.getId());
             jogo.setIdDeposito(deposito.getId());
-            jogo.setValor(Double.parseDouble(this.gestaoJogos.getjFormattedTextFieldValor().getText().replace(",", ".")));
-            jogo.setClassificacao(Integer.parseInt(this.gestaoJogos.getjTextFieldClassificacao().getText().replace(",", ".")));
+            if (!this.gestaoJogos.getjFormattedTextFieldValor().getText().isEmpty()) {
+                jogo.setValor(Double.parseDouble(this.gestaoJogos.getjFormattedTextFieldValor().getText().replace(",", ".")));
+            } else {
+                jogo.setValor(0.00);
+            }
+            jogo.setClassificacao(Double.parseDouble(this.gestaoJogos.getjTextFieldClassificacao().getText().replace(",", ".")));
             jogo.setReview(this.gestaoJogos.getjTextAreaReview().getText());
             
-            //Chama a função para cadastrar o jogo
-            jogoDAO.editaJogo(jogo);
-            
-            //Chama a função para limpar a view
-            limpaView();
+            if (jogo.validaCampos()) {
+                //Chama a função para cadastrar o jogo
+                jogoDAO.editaJogo(jogo);
+
+                //Chama a função para limpar a view
+                limpaView();
+            }
         }
         //Excluir
         else if (e.getSource() == this.getGestaoJogos().getjButtonExcluir()) {
